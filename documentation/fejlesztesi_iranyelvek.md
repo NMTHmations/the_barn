@@ -45,7 +45,7 @@
     - **Legyünk korrektek a tesztelőkkel és ne utolsó pillanatban dobjuk oda nekik, mindenkinek van dolga!** Számoljátok bele, hogy akár vissza is kerülhet hiba esetén hozzátok újra!
     - **A kiadott feladatok határidejeit lehetőleg tartsuk be.**
 
-6. **Projekttal kapcsolatos követelmények a sikeres gyakorlat teljesítéséhez**
+6. **Projekttel kapcsolatos követelmények a sikeres gyakorlat teljesítéséhez**
 
     - Nem triviális üzleti logikával rendelkezzen. Magyarul: adatokat összekombináljunk, származtassunk a projektünkben
     - Perzisztencia. Magyarul: az adatok perzisztenciája. Még magyarabbul: adatokat folyamatosan mentsük (lehet ez fájl, vagy adatbázis - adatbázis ajánlott) 
