@@ -1,6 +1,7 @@
 package com.sfm.thebarn.thebarn;
 
 import com.sfm.thebarn.thebarn.model.*;
+import com.sfm.thebarn.thebarn.view.PassEncry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,6 +19,11 @@ public class ThebarnApplication {
 		UsersCRUD userrepo = configurableApplicationContext.getBean(UsersCRUD.class);
 		repo.save(farm);
 		userrepo.save(user);
+		String passwd = "thebarn";
+		String hashed = PassEncry.HashString(passwd);
+		System.out.println("hashed: " + hashed);
+		String hashed2 = PassEncry.HashString(passwd);
+		System.out.println(hashed2.compareToIgnoreCase(hashed));
 	}
 
 }
