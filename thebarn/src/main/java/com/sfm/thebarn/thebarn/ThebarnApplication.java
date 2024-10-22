@@ -19,11 +19,6 @@ public class ThebarnApplication {
 		UsersCRUD userrepo = configurableApplicationContext.getBean(UsersCRUD.class);
 		repo.save(farm);
 		userrepo.save(user);
-		String passwd = "thebarn";
-		String hashed = PassEncry.HashString(passwd);
-		System.out.println("hashed: " + hashed);
-		String hashed2 = PassEncry.HashString(passwd);
-		System.out.println(hashed2.compareToIgnoreCase(hashed));
 	}
 
 }
