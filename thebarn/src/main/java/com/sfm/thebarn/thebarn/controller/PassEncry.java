@@ -1,4 +1,4 @@
-package com.sfm.thebarn.thebarn.view;
+package com.sfm.thebarn.thebarn.controller;
 
 import org.apache.commons.codec.digest.DigestUtils;
 

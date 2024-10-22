@@ -1,7 +1,7 @@
 package com.sfm.thebarn.thebarn;
 
 import com.sfm.thebarn.thebarn.model.*;
-import com.sfm.thebarn.thebarn.view.PassEncry;
+import com.sfm.thebarn.thebarn.controller.PassEncry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
