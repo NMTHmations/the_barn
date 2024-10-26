@@ -70,28 +70,4 @@ public class SessionConfig implements BeanClassLoaderAware {
             return this.objectMapper.readValue(inputStream, Object.class);
         }
     }
-
-
-    /*Customized query that inserts and updates the session attributes*/
-    /*Insert session attributes query*/
-    private static final String CREATE_SESSION_ATTRIBUTE_QUERY = """
-            INSERT INTO SPRING_SESSION_ATTRIBUTES (SESSION_PRIMARY_ID, ATTRIBUTE_NAME, ATTRIBUTE_BYTES)
-            VALUES (?, ?, encode(?, 'escape')::jsonb)
-            """;
-
-    /*Update session attributes query*/
-    private static final String UPDATE_SESSION_ATTRIBUTE_QUERY = """
-            UPDATE SPRING_SESSION_ATTRIBUTES
-            SET ATTRIBUTE_BYTES = encode(?, 'escape')::jsonb
-            WHERE SESSION_PRIMARY_ID = ?
-            AND ATTRIBUTE_NAME = ?
-            """;
-
-    @Bean
-    SessionRepositoryCustomizer<JdbcIndexedSessionRepository> customizer() {
-        return (sessionRepository) -> {
-            sessionRepository.setCreateSessionAttributeQuery(CREATE_SESSION_ATTRIBUTE_QUERY);
-            sessionRepository.setUpdateSessionAttributeQuery(UPDATE_SESSION_ATTRIBUTE_QUERY);
-        };
-    }
 }
