@@ -9,9 +9,8 @@ import org.springframework.core.serializer.Deserializer;
 import org.springframework.core.serializer.Serializer;
 import org.springframework.core.serializer.support.DeserializingConverter;
 import org.springframework.core.serializer.support.SerializingConverter;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
-import org.springframework.session.config.SessionRepositoryCustomizer;
-import org.springframework.session.jdbc.JdbcIndexedSessionRepository;
 import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 
 import java.io.IOException;
@@ -53,7 +52,7 @@ public class SessionConfig implements BeanClassLoaderAware {
 
         @Override
         public void serialize(Object object, OutputStream outputStream) throws IOException {
-            this.objectMapper.writeValue(outputStream, object);;
+            this.objectMapper.writeValue(outputStream, object);
         }
     }
 
@@ -69,5 +68,11 @@ public class SessionConfig implements BeanClassLoaderAware {
         public Object deserialize(InputStream inputStream) throws IOException {
             return this.objectMapper.readValue(inputStream, Object.class);
         }
+    }
+
+    /*WebSession integration with Redis*/
+    @Bean
+    public LettuceConnectionFactory redisConnectionFactory() {
+        return new LettuceConnectionFactory();
     }
 }
