@@ -17,7 +17,7 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String showRegistrationForm() {
-        return "registration"; // Ez a registration.html fájl neve
+        return "registration";
     }
 
     @PostMapping("/register")
@@ -28,7 +28,7 @@ public class RegistrationController {
             model.addAttribute("error", "Ez az e-mail cím már regisztrálva van.");
             return "registration";
         }
-        userService.registerUser(new Users(email, password, null)); // `null` értéket adunk át a FarmId mezőhöz
+        userService.registerUser(new Users(email, password, null));
         return "redirect:/login";
     }
 }
