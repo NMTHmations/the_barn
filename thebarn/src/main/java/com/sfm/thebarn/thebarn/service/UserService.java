@@ -1,7 +1,7 @@
 package com.sfm.thebarn.thebarn.service;
 
 import com.sfm.thebarn.thebarn.model.Users;
-import com.sfm.thebarn.thebarn.repository.UserRepository;
+import com.sfm.thebarn.thebarn.model.UsersCRUD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UsersCRUD userRepository;
 
     public boolean userExists(String email) {
         return userRepository.findById(email).isPresent();
