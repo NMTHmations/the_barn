@@ -2,6 +2,7 @@ package com.sfm.thebarn.thebarn.controller;
 
 import com.sfm.thebarn.thebarn.model.Users;
 import com.sfm.thebarn.thebarn.model.UsersCRUD;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,14 +25,8 @@ public class LoginController {
     @PostMapping("/login")
     public String login(@RequestParam String Email, @RequestParam String Password, Model model) {
 
-        List<Users> allUsers = (List<Users>) usersRepository.findAll(); //find users
-        if (allUsers.isEmpty())
-        {
-            return "redirect:/signup"; //no user redirects to sign up
-        }
-
         Users user = usersRepository.findById(Email).orElse(null); //find submitted username
-        if (user != null && user.getPasswd().equals(Password)) //if password match
+        if (user != null && user.getPasswd().equals(DigestUtils.sha256Hex(Password))) //if password match
         {
             return "redirect:/csillamfasz"; //redirect to home page
         }

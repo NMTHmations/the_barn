@@ -2,6 +2,7 @@ package com.sfm.thebarn.thebarn.controller;
 
 import com.sfm.thebarn.thebarn.model.Users;
 import com.sfm.thebarn.thebarn.service.UserService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +29,7 @@ public class RegistrationController {
             model.addAttribute("error", "Ez az e-mail cím már regisztrálva van.");
             return "registration";
         }
-        userService.registerUser(new Users(email, password, null));
+        userService.registerUser(new Users(email, DigestUtils.sha256Hex(password), null));
         return "redirect:/login";
     }
 }
