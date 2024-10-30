@@ -30,7 +30,6 @@
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
         <button type="submit" class="btn btn-primary">Regisztráció</button>
-        <a href="/login" class="btn btn-outline-secondary ml-2">Vissza a Belépéshez</a>
     </form>
 </div>
 
