@@ -3,11 +3,13 @@ package com.sfm.thebarn.thebarn;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /*It is just a simple introduction of Junit under Spring Boot*/
+
 
 @SpringBootTest
 public class PassGenTests {
