@@ -1,7 +1,6 @@
 package com.sfm.thebarn.thebarn.controller;
 
-import com.sfm.thebarn.thebarn.model.Animals;
-import com.sfm.thebarn.thebarn.model.AnimalsCRUD;
+import com.sfm.thebarn.thebarn.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -23,22 +22,20 @@ public class SearchInterfaceController {
     @Autowired
     private AnimalsCRUD animalsRepository;
 
-    /*@GetMapping("/search_interface")
-    public String hello(Model model, @RequestParam(value="name")String name) {
-        model.addAttribute("name", name);
-        return "search_interface";
-    }*/
+    @Autowired
+    private BreedCodeCRUD breedCodeRepository;
+
+    @Autowired
+    private TypeCodesCRUD typeCodesRepository;
 
     @GetMapping("/search_interface")
     public String showSearchInterface(Model model) {
         List<Animals> animals = (List<Animals>)animalsRepository.findAll();
-        //model.addAttribute("rowCount", animals.size());
+        List<BreedCodes> breeds = (List<BreedCodes>)breedCodeRepository.findAll();
+        List<TypeCodes> types = (List<TypeCodes>)typeCodesRepository.findAll();
+        model.addAttribute("breeds", breeds);
+        model.addAttribute("types", types);
         model.addAttribute("animals", animals);
-        //List<String> animalHtml;
-
-        /*for(var animal : animals) {
-
-        }*/
         return "search_interface";
     }
 

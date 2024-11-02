@@ -34,14 +34,18 @@
                     <!--breed dropdown options-->
                     <select name="breed" class="dropdown-generic">
                         <option value="all" selected>minden fajta</option>
-                        <option value="######">######</option>
+                        <#list breeds as breed>
+                        <option value="${breed.id}">${breed.name}</option>
+                        </#list>
                     </select>
                 </div>
                 <div class="col-sm-2 search-header-generic">
                     <!--type dropdown options-->
                     <select name="type" class="dropdown-generic">
                         <option value="all" selected>minden típus</option>
-                        <option value="######">######</option>
+                        <#list types as type>
+                        <option value="${type.id}}">${type.name}</option>
+                        </#list>
                     </select>
                 </div>
                 <div class="col-sm-1 search-header-generic">
@@ -78,9 +82,10 @@
                             típus
                         </div>
                     </div>
-                <!-- table row -->
+                <!-- table rows -->
                  <!-- todo: 'sex' is boolean but what do 0 and 1 refer to exactly? (temp: 1-üsző, 0-bika) -->
-                 <!-- todo: #else (if 0 results) branch -->
+                 <!-- todo: állattartó neve = Users.UserId / Farms.FarmName ? -->
+                 <!-- todo: shorten dynamic values longer than x characters -->
                 <#list animals as animal>
                 <div class="row table-row">
                     <div class="col-sm-2">
@@ -105,6 +110,10 @@
                         ${animal.type}
                     </div>
                 </div>
+                <#else>
+                    <div>
+                        nincs találat
+                    </div>
                 </#list>
                 <!-- row end -->
                 </div>
