@@ -19,5 +19,4 @@ public class ThebarnApplication {
 		repo.save(farm);
 		userrepo.save(user);
 	}
-
 }
