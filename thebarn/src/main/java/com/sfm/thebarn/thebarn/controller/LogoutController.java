@@ -11,8 +11,8 @@ public class LogoutController {
     public String showLogout(HttpServletRequest request) {
         HttpSession req = request.getSession(false);
         if (req != null) {
-            return "redirect:/";
+            req.invalidate();
         }
-        return "login";
+        return "redirect:/";
     }
 }

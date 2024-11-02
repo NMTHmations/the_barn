@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class RegistrationController {
 
@@ -18,6 +20,10 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String showRegistrationForm() {
+        if (!userService.returnList().isEmpty())
+        {
+            return "redirect:/login";
+        }
         return "registration";
     }
 

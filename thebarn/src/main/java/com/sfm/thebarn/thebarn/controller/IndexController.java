@@ -1,33 +1,29 @@
 package com.sfm.thebarn.thebarn.controller;
 
-import com.sfm.thebarn.thebarn.model.Users;
-import com.sfm.thebarn.thebarn.model.UsersCRUD;
+import com.sfm.thebarn.thebarn.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
-
 @Controller
 public class IndexController {
 
     @Autowired
-    private UsersCRUD usersRepository;
+    private UserService userService;
 
     @GetMapping("")
     public String index(HttpServletRequest request) {
         @SuppressWarnings("unchecked")
         HttpSession req = request.getSession(false);
         if (req == null) {
+            if (userService.returnList().isEmpty())
+            {
+                return "redirect:/register";
+            }
             return "redirect:/login";
         }
-        List<Users> allUsers = (List<Users>) usersRepository.findAll(); //find users
-        if (allUsers.isEmpty())
-        {
-            return "redirect:/register"; //no user redirects to sign up
-        }
-        return "redirect:/";
+        return "redirect:/csillamfasz";
     }
 }

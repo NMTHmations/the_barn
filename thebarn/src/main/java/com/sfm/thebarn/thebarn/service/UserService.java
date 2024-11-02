@@ -5,6 +5,8 @@ import com.sfm.thebarn.thebarn.model.UsersCRUD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -17,5 +19,8 @@ public class UserService {
 
     public void registerUser(Users user) {
         userRepository.save(user);
+    }
+    public List<Users> returnList() {
+        return (List<Users>) userRepository.findAll();
     }
 }
