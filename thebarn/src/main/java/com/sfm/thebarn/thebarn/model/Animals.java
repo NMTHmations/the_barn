@@ -140,8 +140,21 @@ public class Animals {
         type.setId(id);
     }
 
-    public int getType()
+    /*public int getType()
     {
         return type.getId();
+    }*/
+
+    // temp for search-interface
+    public String getType() {
+        return type.getName();
+    }
+
+    public Farms getFarmId() {
+        return farmid;
+    }
+
+    public Boolean getSex() {
+        return sex;
     }
 }

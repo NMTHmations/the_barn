@@ -79,35 +79,33 @@
                         </div>
                     </div>
                 <!-- table row -->
-                    <#assign n = rowCount>
-                    <#if rowCount==0>
-                    	nincs találat
-                    </#if>
-                    <#list 0..<n as i>
-                    <div class="row table-row">
-                        <div class="col-sm-2">
-                            animalID
-                        </div>
-                        <div class="col-sm-2">
-                            animalKeeper
-                        </div>
-                        <div class="col-sm-2">
-                            farmID
-                        </div>
-                        <div class="col-sm-2">
-                            birthDate
-                        </div>
-                        <div class="col-sm-1">
-                            sex
-                        </div>
-                        <div class="col-sm-2">
-                            breed
-                        </div>
-                        <div class="col-sm-1">
-                            type
-                        </div>
+                 <!-- todo: 'sex' is boolean but what do 0 and 1 refer to exactly? (temp: 1-üsző, 0-bika) -->
+                 <!-- todo: #else (if 0 results) branch -->
+                <#list animals as animal>
+                <div class="row table-row">
+                    <div class="col-sm-2">
+                        ${animal.id}
                     </div>
-                    </#list>
+                    <div class="col-sm-2">
+                        ${animal.farmId.farmName}
+                    </div>
+                    <div class="col-sm-2">
+                        ${animal.farmId.id}
+                    </div>
+                    <div class="col-sm-2">
+                        ${animal.birthDate}
+                    </div>
+                    <div class="col-sm-1">
+                        ${animal.sex?string('üsző','bika')}
+                    </div>
+                    <div class="col-sm-2">
+                        ${animal.breed}
+                    </div>
+                    <div class="col-sm-1">
+                        ${animal.type}
+                    </div>
+                </div>
+                </#list>
                 <!-- row end -->
                 </div>
             </div>

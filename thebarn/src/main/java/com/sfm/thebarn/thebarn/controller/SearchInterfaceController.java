@@ -32,17 +32,24 @@ public class SearchInterfaceController {
     @GetMapping("/search_interface")
     public String showSearchInterface(Model model) {
         List<Animals> animals = (List<Animals>)animalsRepository.findAll();
-        model.addAttribute("rowCount", animals.size());
+        //model.addAttribute("rowCount", animals.size());
+        model.addAttribute("animals", animals);
+        //List<String> animalHtml;
+
+        /*for(var animal : animals) {
+
+        }*/
         return "search_interface";
     }
 
+    //todo: bad request if params are left as null
+    //todo: copy addAttributes from GetMapping to PostMapping aswell
     @PostMapping("/search_interface")
     public String search(Model model, @RequestParam(value="query")String query,
                                       @RequestParam(value="option1")String option1,
                                       @RequestParam(value="option2")String option2,
                                       @RequestParam(value="breed")String breed,
                                       @RequestParam(value="type")String type) {
-            /*public String search(Model model) {*/
         List<Animals> animals = (List<Animals>)animalsRepository.findAll();
         //check query values
         //if()
