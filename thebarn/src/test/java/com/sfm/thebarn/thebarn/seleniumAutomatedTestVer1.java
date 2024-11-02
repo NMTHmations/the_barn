@@ -1,7 +1,6 @@
 package com.sfm.thebarn.thebarn;
 
 
-import com.sfm.thebarn.thebarn.model.Users;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
