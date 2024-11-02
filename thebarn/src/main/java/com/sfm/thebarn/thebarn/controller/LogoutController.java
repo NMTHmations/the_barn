@@ -13,6 +13,6 @@ public class LogoutController {
         if (req != null) {
             return "redirect:/";
         }
-        return "logout";
+        return "login";
     }
 }

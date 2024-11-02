@@ -2,6 +2,8 @@ package com.sfm.thebarn.thebarn.controller;
 
 import com.sfm.thebarn.thebarn.model.Users;
 import com.sfm.thebarn.thebarn.model.UsersCRUD;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,15 +25,15 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam String Email, @RequestParam String Password, Model model) {
-
+    public String login(@RequestParam String Email, @RequestParam String Password, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
         Users user = usersRepository.findById(Email).orElse(null); //find submitted username
         if (user != null && user.getPasswd().equals(DigestUtils.sha256Hex(Password))) //if password match
         {
             return "redirect:/csillamfasz"; //redirect to home page
         }
-        
         model.addAttribute("error", "Rossz e-mail és/vagy jelszó!"); // if password mismatch make error message visible
+        session.invalidate();
         return "login"; //and stay on login
     }
 }
