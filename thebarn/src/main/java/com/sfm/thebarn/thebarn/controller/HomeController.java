@@ -1,6 +1,5 @@
 package com.sfm.thebarn.thebarn.controller;
 
-import com.sfm.thebarn.thebarn.model.UsersCRUD;
 import com.sfm.thebarn.thebarn.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -15,7 +14,6 @@ public class HomeController {
 
     @GetMapping("/csillamfasz")
     public String showCsillamfaszPage(HttpServletRequest request) {
-        @SuppressWarnings("unchecked")
         HttpSession req = request.getSession(false);
         if (req == null) {
             return "redirect:/login";

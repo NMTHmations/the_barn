@@ -15,7 +15,6 @@ public class IndexController {
 
     @GetMapping("")
     public String index(HttpServletRequest request) {
-        @SuppressWarnings("unchecked")
         HttpSession req = request.getSession(false);
         if (req == null) {
             if (userService.returnList().isEmpty())
