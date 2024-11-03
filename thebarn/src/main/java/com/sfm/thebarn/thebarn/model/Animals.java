@@ -144,4 +144,6 @@ public class Animals {
     {
         return type.getId();
     }
+
+    public boolean getSex() {return sex;} // needed an additional getter
 }
