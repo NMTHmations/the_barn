@@ -28,14 +28,6 @@
                            float: inline-start;">
                 Belépés
             </button>
-            <button type="button"
-                    class="btn btn-outline-primary"
-                    onclick="document.location='register'"
-                    style="border: 2px solid rgb(29, 72, 114);
-                           color: rgb(29,72,114);
-                           float: inline-end;">
-                Regisztráció
-            </button>
         </form>
         <div style="content: ''; clear: both; display: table;"></div>
         <#if error??>
