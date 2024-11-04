@@ -10,9 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import java.sql.*;
 import java.time.Duration;
 
@@ -24,7 +23,7 @@ public class seleniumAutomatedTestVer1 {
     WebDriver driver;
 
     // Runs before every class
-    @BeforeClass
+    @BeforeMethod
     public void setUp() throws ClassNotFoundException{
         // Load the Spring Boot-Web env
         SpringApplication.run(ThebarnApplication.class);
@@ -49,7 +48,7 @@ public class seleniumAutomatedTestVer1 {
     }
 
     // Runs after every class
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
         // Close selenium environment
         driver.quit();
