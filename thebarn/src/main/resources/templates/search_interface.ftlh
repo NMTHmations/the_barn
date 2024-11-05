@@ -83,8 +83,6 @@
                         </div>
                     </div>
                 <!-- table rows -->
-                 <!-- todo: 'sex' is boolean but what do 0 and 1 refer to exactly? (temp: 1-üsző, 0-bika) -->
-                 <!-- todo: állattartó neve = Users.UserId / Farms.FarmName ? -->
                  <!-- todo: shorten dynamic values longer than x characters -->
                 <#list animals as animal>
                 <div class="row table-row">
