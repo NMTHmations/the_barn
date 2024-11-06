@@ -1,10 +1,18 @@
 package com.sfm.thebarn.thebarn.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name="diseaselog")
 public class DiseaseLog {
     @Id
@@ -29,27 +37,5 @@ public class DiseaseLog {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    /*Getters and setters*/
-
-    public int getNumber() {
-        return number;
-    }
-    /*public String GetAnimalId() {
-        return animalid.getId();
-    }*/
-    public void setAnimalid(Animals animalid) {
-        this.animalid = animalid;
-    }
-    public void SetDate(Date date) {
-        this.date = date;
-    }
-    public Date getDate()
-    {
-        return date;
-    }
-    public String getDescription() {
-        return description;
     }
 }

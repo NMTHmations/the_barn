@@ -1,8 +1,16 @@
 package com.sfm.thebarn.thebarn.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name="colourcodes")
 public class ColourCodes {
     @Id
@@ -12,17 +20,5 @@ public class ColourCodes {
     public ColourCodes() {}
     public ColourCodes(String name) {
         this.name = name;
-    }
-
-    /*Getters and Setters*/
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
     }
 }

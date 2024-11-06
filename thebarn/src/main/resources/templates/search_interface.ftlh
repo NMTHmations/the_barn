@@ -83,7 +83,6 @@
                         </div>
                     </div>
                 <!-- table rows -->
-                 <!-- todo: shorten dynamic values longer than x characters -->
                 <#list animals as animal>
                 <div class="row table-row">
                     <div class="col-sm-2">
