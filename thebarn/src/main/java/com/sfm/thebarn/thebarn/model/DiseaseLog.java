@@ -28,7 +28,6 @@ public class DiseaseLog {
     private Date date;
     private String description;
 
-    public DiseaseLog(){}
     public DiseaseLog(DiseaseTypes type, Animals animal, Date date) {
         this.diseaseTypes = type;
         this.animalid = animal;

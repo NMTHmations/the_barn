@@ -7,7 +7,6 @@
         <link href="css/search_interface.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://kit.fontawesome.com/19314415a0.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <form action="" method="post">
@@ -82,7 +81,7 @@
                             típus
                         </div>
                     </div>
-                <!-- table rows -->
+                <!-- table rows (search results) -->
                 <#list animals as animal>
                 <div class="row table-row">
                     <div class="col-sm-2">
@@ -112,7 +111,7 @@
                         nincs találat
                     </div>
                 </#list>
-                <!-- row end -->
+                <!-- end of rows -->
                 </div>
             </div>
         </div>
