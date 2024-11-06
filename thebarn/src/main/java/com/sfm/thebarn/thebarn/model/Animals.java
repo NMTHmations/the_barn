@@ -1,10 +1,18 @@
 package com.sfm.thebarn.thebarn.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Builder
 @Table(name="animals")
 public class Animals {
     @Id
@@ -44,8 +52,6 @@ public class Animals {
 
     private String PrevId;
 
-    public Animals() {}
-
     public Animals(String id,Boolean sex,Animals father,Animals mother,Farms farm,Date Birth,ColourCodes color,BreedCodes breed,TypeCodes type)
     {
         this.id = id;
@@ -57,104 +63,5 @@ public class Animals {
         this.color = color;
         this.breed = breed;
         this.type = type;
-    }
-
-    /*Getters and setters*/
-
-    public void SetPrevId(String PrevId)
-    {
-        this.PrevId = PrevId;
-    }
-
-    public void SetDeathDate(Date DeathDate)
-    {
-        this.DeathDate = DeathDate;
-    }
-
-    public String getId()
-    {
-        return id;
-    }
-
-    public void setId(String id)
-    {
-        this.id = id;
-    }
-
-    public String getFatherId()
-    {
-        return fatherid.getId();
-    }
-
-    public void setFatherId(String fatherId)
-    {
-        fatherid.setId(fatherId);
-    }
-
-    public String getMotherId()
-    {
-        return motherid.getId();
-    }
-
-    public void setMotherId(String id)
-    {
-        fatherid.setId(id);
-    }
-    public void SetBirthDate(Date BirthDate)
-    {
-        this.BirthDate = BirthDate;
-    }
-
-    public Date getBirthDate()
-    {
-        return BirthDate;
-    }
-
-    public Date getDeathDate()
-    {
-        return DeathDate;
-    }
-
-    public String getPrevId()
-    {
-        return PrevId;
-    }
-
-    public void setColor(int id)
-    {
-        color.setId(id);
-    }
-
-    public String getColor()
-    {
-        return color.getName();
-    }
-
-    public String getBreed()
-    {
-        return breed.getName();
-    }
-
-    public void SetType(int id)
-    {
-        type.setId(id);
-    }
-
-    /*public int getType()
-    {
-        return type.getId();
-    }*/
-
-    // temp for search-interface
-    public String getType() {
-        return type.getName();
-    }
-
-    public Farms getFarmId() {
-        return farmid;
-    }
-
-    public Boolean getSex() {
-        return sex;
     }
 }

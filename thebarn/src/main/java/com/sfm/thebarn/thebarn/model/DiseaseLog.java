@@ -36,9 +36,9 @@ public class DiseaseLog {
     public int getNumber() {
         return number;
     }
-    public String GetAnimalId() {
+    /*public String GetAnimalId() {
         return animalid.getId();
-    }
+    }*/
     public void setAnimalid(Animals animalid) {
         this.animalid = animalid;
     }
