@@ -17,7 +17,6 @@ public class ColourCodes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     String name;
-    public ColourCodes() {}
     public ColourCodes(String name) {
         this.name = name;
     }

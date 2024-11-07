@@ -28,7 +28,7 @@ public class Farms {
     private String  Street;
     @Column(nullable = false)
     private int  StreetNumber;
-
+    /*
     public Farms(String id, String FarmName, int ZIPCode, String Settlement, String Street, int StreetNumber) {
         this.id = id;
         this.FarmName = FarmName;
@@ -36,5 +36,5 @@ public class Farms {
         this.Settlement = Settlement;
         this.Street = Street;
         this.StreetNumber = StreetNumber;
-    }
+    }*/
 }

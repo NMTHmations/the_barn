@@ -17,7 +17,6 @@ public class BreedCodes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    public BreedCodes() {}
     public BreedCodes(String name) {
         this.name = name;
     }

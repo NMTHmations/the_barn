@@ -17,7 +17,6 @@ public class TypeCodes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    public TypeCodes() {}
     public TypeCodes(String name) {
         this.name = name;
     }
