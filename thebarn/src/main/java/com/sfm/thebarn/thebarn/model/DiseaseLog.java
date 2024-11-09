@@ -33,8 +33,4 @@ public class DiseaseLog {
         this.animalid = animal;
         this.date = date;
     }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }
