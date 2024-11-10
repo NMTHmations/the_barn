@@ -34,7 +34,7 @@ public class CattleRegistrationController {
     public String showCattleRegistration() {return "cattle_registration";}
 
     @PostMapping("/cattle_registration")
-    public String cattleRegistration(@RequestParam String selfId, @RequestParam String sex, @RequestParam String breed, @RequestParam String type, @RequestParam String colour, @RequestParam String birthDate, @RequestParam String deathDate, @RequestParam String previousId, @RequestParam String motherId, @RequestParam String fatherId, @RequestParam String holdingId, Model model) {
+    public String cattleRegistration(@RequestParam String selfId, @RequestParam String sex, @RequestParam String breed, @RequestParam String type, @RequestParam String colour, @RequestParam String birthDate, @RequestParam String motherId, @RequestParam String fatherId, @RequestParam String holdingId, Model model) {
 
         Animals self = animalsRepository.findById(selfId).orElse(null); //find submitted self id
         if (self != null) //if self id already exists
