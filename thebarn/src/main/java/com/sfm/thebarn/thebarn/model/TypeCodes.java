@@ -8,9 +8,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
+//todo vv TEMP (uncomment before final)
+/*@NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder*/
 @Table(name="typecodes")
 public class TypeCodes {
     @Id
@@ -20,4 +21,7 @@ public class TypeCodes {
     public TypeCodes(String name) {
         this.name = name;
     }
+
+    //todo vv TEMP (remove before final)
+    public TypeCodes(){}
 }

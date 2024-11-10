@@ -12,15 +12,17 @@ public class ThebarnApplication {
 
 		ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(ThebarnApplication.class, args);
 		/*Just a simple test for Future Implementations*/
-		//Farms farm = new Farms("9821398","Csonkas Tanya",3893,"Mogyoroska","Csonkas Tanya utca",1);
-		Farms farm = Farms.builder()
+		//todo vv TEMP (comment before final)
+		Farms farm = new Farms("9821398","Csonkas Tanya",3893,"Mogyoroska","Csonkas Tanya utca",1);
+		//todo vv TEMP (uncomment before final)
+		/*Farms farm = Farms.builder()
 				.id("9821398")
 				.FarmName("Csonkas Tanya")
 				.ZIPCode(3893)
 				.Settlement("Mogyoroska")
 				.Street("Csonkas Tanya utca")
 				.StreetNumber(1)
-				.build();
+				.build();*/
 		Users user = new Users("CSINEQ","KIRALY",farm);
 		FarmsCRUD repo = configurableApplicationContext.getBean(FarmsCRUD.class);
 		UsersCRUD userrepo = configurableApplicationContext.getBean(UsersCRUD.class);

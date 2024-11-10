@@ -11,9 +11,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
+//todo vv TEMP (uncomment before final)
+/*@NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder*/
 @Table(name = "Farms")
 public class Farms {
     @Id
@@ -29,12 +30,15 @@ public class Farms {
     @Column(nullable = false)
     private int  StreetNumber;
 
-    /*public Farms(String id, String FarmName, int ZIPCode, String Settlement, String Street, int StreetNumber) {
+    //todo vv TEMP (comment before final)
+    public Farms(){}
+
+    public Farms(String id, String FarmName, int ZIPCode, String Settlement, String Street, int StreetNumber) {
         this.id = id;
         this.FarmName = FarmName;
         this.ZIPCode = ZIPCode;
         this.Settlement = Settlement;
         this.Street = Street;
         this.StreetNumber = StreetNumber;
-    }*/
+    }
 }

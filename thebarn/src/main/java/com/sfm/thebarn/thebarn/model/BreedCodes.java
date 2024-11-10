@@ -8,9 +8,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
+//todo vv TEMP (uncomment before final)
+/*@NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder*/
 @Table(name="breedcodes")
 public class BreedCodes {
     @Id
@@ -20,4 +21,7 @@ public class BreedCodes {
     public BreedCodes(String name) {
         this.name = name;
     }
+
+    //todo vv TEMP (remove before final)
+    public BreedCodes(){}
 }
