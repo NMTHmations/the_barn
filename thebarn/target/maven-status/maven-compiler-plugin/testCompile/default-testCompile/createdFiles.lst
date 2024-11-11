@@ -1,0 +1,5 @@
+com\sfm\thebarn\thebarn\seleniumAutomatedVer1\NotRegistered.class
+com\sfm\thebarn\thebarn\ThebarnApplicationTests.class
+com\sfm\thebarn\thebarn\PassGenTests.class
+com\sfm\thebarn\thebarn\seleniumAutomatedVer1\RegisteredButNotLoggedIn.class
+com\sfm\thebarn\thebarn\seleniumAutomatedVer1\RegisteredAndLoggedIn.class

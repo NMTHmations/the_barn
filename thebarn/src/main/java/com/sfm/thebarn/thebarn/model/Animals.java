@@ -52,6 +52,8 @@ public class Animals {
 
     private String PrevId;
 
+    public Animals() {}
+
     public Animals(String id,Boolean sex,Animals father,Animals mother,Farms farm,Date Birth,ColourCodes color,BreedCodes breed,TypeCodes type)
     {
         this.id = id;
@@ -63,5 +65,107 @@ public class Animals {
         this.color = color;
         this.breed = breed;
         this.type = type;
+    }
+
+    /*Getters and setters*/
+
+    public void SetPrevId(String PrevId)
+    {
+        this.PrevId = PrevId;
+    }
+
+    public void SetDeathDate(Date DeathDate)
+    {
+        this.DeathDate = DeathDate;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+
+    public String getFatherId()
+    {
+        if (fatherid == null){
+            return null;
+        }
+        else {
+            return fatherid.getId();
+        }
+    }
+
+    public void setFatherId(String fatherId)
+    {
+        fatherid.setId(fatherId);
+    }
+
+    public String getMotherId()
+    {
+        if (motherid == null){
+            return null;
+        }
+        else {
+            return motherid.getId();
+        }
+    }
+
+    public void setMotherId(String id)
+    {
+        fatherid.setId(id);
+    }
+    public void SetBirthDate(Date BirthDate)
+    {
+        this.BirthDate = BirthDate;
+    }
+
+    public Date getBirthDate()
+    {
+        return BirthDate;
+    }
+
+    public Date getDeathDate()
+    {
+        return DeathDate;
+    }
+
+    public String getPrevId()
+    {
+        return PrevId;
+    }
+
+    public void setColor(int id)
+    {
+        color.setId(id);
+    }
+
+    public String getColor()
+    {
+        return color.getName();
+    }
+
+    public String getBreed()
+    {
+        return breed.getName();
+    }
+
+    public void SetType(int id)
+    {
+        type.setId(id);
+    }
+
+    public String getType()
+    {
+        return type.getName();
+    }
+    public boolean getSex() {return sex;}
+    public void setSex(boolean sex) { this.sex = sex; }
+
+    public String getFarmid() {
+        return farmid.getId();
     }
 }
