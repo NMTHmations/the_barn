@@ -1,6 +1,9 @@
 package com.sfm.thebarn.thebarn.controller;
 
 import com.sfm.thebarn.thebarn.model.*;
+import com.sfm.thebarn.thebarn.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,8 +33,21 @@ public class CattleRegistrationController {
     @Autowired
     private TypeCodesCRUD typeCodesRepository;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/cattle_registration")
-    public String showCattleRegistration() {return "cattle_registration";}
+    public String showCattleRegistration(HttpServletRequest request) {
+        HttpSession req = request.getSession(false);
+        if (req == null) {
+            return "redirect:/login";
+        }
+        if (userService.returnList().isEmpty())
+        {
+            return "redirect:/register";
+        }
+        return "cattle_registration";
+    }
 
     @PostMapping("/cattle_registration")
     public String cattleRegistration(@RequestParam String selfId, @RequestParam String sex, @RequestParam String breed, @RequestParam String type, @RequestParam String colour, @RequestParam String birthDate, @RequestParam String motherId, @RequestParam String fatherId, @RequestParam String holdingId, Model model) {
@@ -59,7 +75,7 @@ public class CattleRegistrationController {
         Animals mother = animalsRepository.findById(motherId).orElse(null); //find submitted mother id
         if (!motherId.isBlank()) // if left empty, skip
         {
-            if (mother == null || mother.getSex()) //if mother id doesn't exist or a male
+            if (mother == null || mother.isSex()) //if mother id doesn't exist or a male
             {
                 model.addAttribute("MIerror", "Nem létező Anya azonosító!<br>(előbb hozza létre az Anya marhát vagy hagyja üresen)"); // make mother id error message visible
                 return "cattle_registration"; // stay on cattle registration
@@ -69,7 +85,7 @@ public class CattleRegistrationController {
         Animals father = animalsRepository.findById(fatherId).orElse(null); //find submitted father id
         if (!fatherId.isBlank()) //if not empty then skip
         {
-            if (father == null || !father.getSex()) //if father id doesn't exist or a female
+            if (father == null || !father.isSex()) //if father id doesn't exist or a female
             {
                 model.addAttribute("FIerror", "Nem létező Apa azonosító!<br>(előbb hozza létre az Apa marhát vagy hagyja üresen)"); // make father id error message visible
                 return "cattle_registration"; // stay on cattle registration
@@ -95,6 +111,6 @@ public class CattleRegistrationController {
         }
 
         //return "search_interface";
-        return "redirect:/search_interface"; //maybe the other return is enough once there is actually a page like that
+        return "redirect:/"; //maybe the other return is enough once there is actually a page like that
     }
 }

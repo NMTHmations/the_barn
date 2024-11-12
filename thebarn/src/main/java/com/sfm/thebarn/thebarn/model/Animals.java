@@ -19,7 +19,7 @@ public class Animals {
     private String id;
 
     @Column(nullable = false)
-    private boolean sex;
+    private boolean Sex;
 
     @ManyToOne
     @JoinColumn(name="FatherId")
@@ -55,7 +55,7 @@ public class Animals {
     public Animals(String id,Boolean sex,Animals father,Animals mother,Farms farm,Date Birth,ColourCodes color,BreedCodes breed,TypeCodes type)
     {
         this.id = id;
-        this.sex = sex;
+        this.Sex = sex;
         this.fatherid = father;
         this.motherid = mother;
         this.farmid = farm;
