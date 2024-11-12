@@ -22,12 +22,16 @@
     <hr>
     <form action="/farm-registration" method="POST">
         <div class="form-group">
-            <label for="farmId">Felhasználónév:</label>
-            <input type="text" class="form-control" id="farmId" name="farmId" required>
+            <label for="Username">Felhasználónév:</label>
+            <input type="text" class="form-control" id="Username" name="Username" required>
         </div>
         <div class="form-group">
             <label for="password">Jelszó:</label>
             <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="farmId">Tenyészetkód:</label>
+            <input type="text" class="form-control" id="farmId" name="farmId" required>
         </div>
         <div class="form-group">
             <label for="FarmName">Tenyészet Neve:</label>

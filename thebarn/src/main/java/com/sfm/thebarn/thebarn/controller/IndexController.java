@@ -13,7 +13,7 @@ public class IndexController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public String index(HttpServletRequest request) {
         HttpSession req = request.getSession(false);
         if (req == null) {
