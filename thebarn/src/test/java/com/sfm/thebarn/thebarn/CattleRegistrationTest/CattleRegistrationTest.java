@@ -1,7 +1,6 @@
 package com.sfm.thebarn.thebarn.CattleRegistrationTest;
 
 import com.sfm.thebarn.thebarn.ThebarnApplication;
-import com.sfm.thebarn.thebarn.model.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +15,8 @@ import java.time.Duration;
 
 import static org.junit.Assert.*;
 
+
+// This testing class is deprecated, don't use it anymore
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CattleRegistrationTest {
