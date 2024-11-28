@@ -19,11 +19,11 @@ function Header() {
         </div>
         <div className="col-sm-1 search-header-generic">
           <input type="checkbox" className="checkbox" name="option1" />
-          <label className="checkbox-label"> üsző</label>
+          <label className="checkbox-label">üsző</label>
         </div>
         <div className="col-sm-1 search-header-generic">
           <input type="checkbox" className="checkbox" name="option2" />
-          <label className="checkbox-label"> bika</label>
+          <label className="checkbox-label">bika</label>
         </div>
         <div className="col-sm-2 search-header-generic">
           <BreedDropdown />
@@ -31,7 +31,7 @@ function Header() {
         <div className="col-sm-2 search-header-generic">
           <TypeDropdown />
         </div>
-        <div className="col-sm-1 search-header-plus-btn">
+        <div className="col-sm-1 search-header-generic">
           <ButtonDropdown />
         </div>
       </div>

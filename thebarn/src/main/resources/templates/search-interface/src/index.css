@@ -6,10 +6,6 @@
     padding-bottom: 2%;
 }
 
-.search-header-main{
-
-}
-
 .search-header-generic{
     text-align: center;
     padding: 1%;
@@ -65,7 +61,6 @@
     background: none;
     outline: none;
     border: none;
-    font-size: 70px;
 }
 
 input[type='checkbox'] {
