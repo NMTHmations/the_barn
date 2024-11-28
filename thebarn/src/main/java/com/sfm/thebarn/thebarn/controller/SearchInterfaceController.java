@@ -28,7 +28,9 @@ public class SearchInterfaceController {
         model.addAttribute("breeds", breeds);
         model.addAttribute("types", types);
         model.addAttribute("animals", animals);
-        return "search_interface";
+        //return "search_interface/src/main";
+        return "search-interface/index";
+        //return "search_interface";
     }
 
     @PostMapping("/search_interface")
@@ -45,6 +47,7 @@ public class SearchInterfaceController {
         model.addAttribute("breeds", breeds);
         model.addAttribute("types", types);
         model.addAttribute("animals", animals);
-        return "search_interface";
+        //return "search_interface";
+        return "search-interface/index";
     }
 }

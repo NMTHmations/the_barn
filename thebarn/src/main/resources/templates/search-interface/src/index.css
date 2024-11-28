@@ -1,0 +1,124 @@
+.search-header{
+    background-color: #a1cd3a;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 3%;
+    padding-bottom: 2%;
+}
+
+.search-header-main{
+    
+}
+
+.search-header-generic{
+    text-align: center;
+    padding: 1%;
+}
+
+.search-header-plus-btn{
+    padding-top: 0%;
+}
+
+.search-header-searchbar{
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 50px;
+    padding-right: 0px;
+    height: 30%;
+}
+
+.searchbar{
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    border-right: 2px solid #a1cd3a;
+    outline: none;
+    width: 85%;
+    height: 30%;
+    background: none;
+}
+
+.btn-submit{
+    height: 30%;
+    width: 10%;
+    background: none;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
+.btn-new{
+    background: none;
+    outline: none;
+    border: none;
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    border: 1px solid #B5E61D;
+}
+
+.btn-plus{
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 70px;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance: none;
+    width:20px;
+    height:20px;
+    background: white;
+    vertical-align: middle;
+}
+
+input[type='checkbox']:checked {
+    background-image: url("img/checkmark.png");
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.checkbox-label{
+    vertical-align: middle;
+    padding-left: 5%;
+}
+
+.dropdown-generic{
+    vertical-align: middle;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    border-right: 2px solid #a1cd3a;
+    outline: none;
+    width: 85%;
+    height: 50%;
+    background: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 50px;
+    padding-left: 5%;
+    padding-right: 3%;
+}
+
+.table-body{
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.table-header{
+    padding-top: 2%;
+    font-weight: 600;
+    border-bottom: 2px solid;
+    padding-bottom: 1%;
+}
+
+.table-row{
+    padding-bottom: 1%;
+    padding-top: 1%;
+    border-bottom: 1px solid;
+    font-weight: 450;
+}
