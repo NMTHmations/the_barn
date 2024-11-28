@@ -9,7 +9,7 @@
 </head>
 <body class="text-center">
 <main class="form-signin">
-    <form action="/disease-registration" method="post">
+    <form action="/disease_registration" method="post">
         <h1>Betegség Regisztráció</h1>
         <div class="form-group">
             <label for="floatingAnimalId">Állat azonosító [Animal ID]:</label>

@@ -10,7 +10,6 @@ import java.sql.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/disease-registration")
 public class DiseaseLogController {
 
     @Autowired
@@ -22,7 +21,7 @@ public class DiseaseLogController {
     @Autowired
     private AnimalsCRUD animalsCRUD;
 
-    @GetMapping
+    @GetMapping("/disease_registration")
     public String showDiseaseRegistrationForm(Model model) {
         List<DiseaseTypes> diseaseTypes = (List<DiseaseTypes>) diseaseTypesCRUD.findAll();
         List<Animals> animals = (List<Animals>) animalsCRUD.findAll();
@@ -30,10 +29,10 @@ public class DiseaseLogController {
         model.addAttribute("diseaseTypes", diseaseTypes);
         model.addAttribute("animals", animals);
 
-        return "disease/registration"; // Térjünk vissza a regisztrációs oldalra
+        return "disease_registration"; // Térjünk vissza a regisztrációs oldalra
     }
 
-    @PostMapping
+    @PostMapping("/disease_registration")
     public String registerDisease(
             @RequestParam("animalId") String animalId,
             @RequestParam("diseaseType") int diseaseTypeId,
