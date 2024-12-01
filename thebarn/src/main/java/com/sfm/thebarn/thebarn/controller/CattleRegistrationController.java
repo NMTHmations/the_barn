@@ -43,7 +43,7 @@ public class CattleRegistrationController {
         }
 
         Users user = (Users) request.getAttribute("user"); // get user from session
-        if (user.getId().equals("admin")) // if user is admin
+        if (user.getFarmId() == null) // if user is admin
         {
             model.addAttribute("HCinput"); // make holding code input visible
             return "cattle_registration"; // stay on cattle registration
@@ -64,7 +64,7 @@ public class CattleRegistrationController {
         if (selfId.equals("-")) //if self id is "-"
         {
             model.addAttribute("CDerror", "Érvénytelen saját azonosító!"); // make cattle data error message visible
-            if (user.getId().equals("admin")){ // if user is admin
+            if (user.getFarmId() == null){ // if user is admin
                 model.addAttribute("HCinput"); // make holding code input visible
             }
             return "cattle_registration"; // stay on cattle registration
@@ -74,14 +74,14 @@ public class CattleRegistrationController {
         if (self != null) //if self id already exists
         {
             model.addAttribute("SIerror", "Már létezik marha ilyen azonosítóval!"); // make self id error message visible
-            if (user.getId().equals("admin")){ // if user is admin
+            if (user.getFarmId() == null){ // if user is admin
                 model.addAttribute("HCinput"); // make holding code input visible
             }
             return "cattle_registration"; // stay on cattle registration
         }
 
         Farms farm;
-        if (user.getId().equals("admin")) // if user is admin
+        if (user.getFarmId() == null) // if user is admin
         {
             farm = farmsRepository.findById(holdingId).orElse(null); // find submitted holding code
             if (farm == null) // if holding code doesn't exist
@@ -103,7 +103,7 @@ public class CattleRegistrationController {
             if (mother == null || mother.getSex()) //if mother id doesn't exist or a male
             {
                 model.addAttribute("MIerror", "Nem létező Anya azonosító!<br>(előbb hozza létre az Anya marhát vagy hagyja üresen)"); // make mother id error message visible
-                if (user.getId().equals("admin")){ // if user is admin
+                if (user.getFarmId() == null){ // if user is admin
                     model.addAttribute("HCinput"); // make holding code input visible
                 }
                 return "cattle_registration"; // stay on cattle registration
@@ -116,7 +116,7 @@ public class CattleRegistrationController {
             if (father == null || !father.getSex()) //if father id doesn't exist or a female
             {
                 model.addAttribute("FIerror", "Nem létező Apa azonosító!<br>(előbb hozza létre az Apa marhát vagy hagyja üresen)"); // make father id error message visible
-                if (user.getId().equals("admin")){ // if user is admin
+                if (user.getFarmId() == null){ // if user is admin
                     model.addAttribute("HCinput"); // make holding code input visible
                 }
                 return "cattle_registration"; // stay on cattle registration
@@ -138,7 +138,7 @@ public class CattleRegistrationController {
         }
         catch (ParseException e) {
             model.addAttribute("Derror", "Dátum formázási hiba, adatok nincsenek mentve!"); // make date error message visible
-            if (user.getId().equals("admin")){ // if user is admin
+            if (user.getFarmId() == null){ // if user is admin
                 model.addAttribute("HCinput"); // make holding code input visible
             }
             return "cattle_registration";
