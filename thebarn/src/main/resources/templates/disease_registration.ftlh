@@ -13,20 +13,41 @@
         <h1>Betegség Regisztráció</h1>
         <div class="form-group">
             <label for="floatingAnimalId">Állat azonosító [Animal ID]:</label>
-            <select id="floatingAnimalId" name="animalId" required>
-                <#list animals as animal>
-                <option value="${animal.id}">${animal.name} (${animal.id})</option>
-            </#list>
-            </select>
+            <input type="text" id="floatingAnimalId" name="animalId" style="width: 400px;" required>
         </div>
         <div class="form-group">
             <label for="floatingDiseaseType">Betegség típusa [Disease Type]:</label>
             <select id="floatingDiseaseType" name="diseaseType" required>
-                <#list diseaseTypes as diseaseType>
-                <option value="${diseaseType.id}">${diseaseType.name}</option>
-            </#list>
+                <option value="1">Tuberkulózis</option>
+                <option value="2">Paratuberkulózis</option>
+                <option value="3">Brucellózis</option>
+                <option value="4">Lépfene</option>
+                <option value="5">Panaritium</option>
+                <option value="6">Szalmonellózis</option>
+                <option value="7">Gangraena emphysematosa</option>
+                <option value="8">Száj- és körömfájás</option>
+                <option value="9">IBR/IPV</option>
+                <option value="10">BVD/MD</option>
+                <option value="11">Trichophytia</option>
+                <option value="12">Ketózis</option>
+                <option value="13">Tetánia</option>
+                <option value="14">Hipokalcémia</option>
+                <option value="15">Tüdőféreg</option>
+                <option value="16">Ascaridida</option>
+                <option value="17">Dicrocoelium dendriticum</option>
+                <option value="18">Clonorchis sinensis</option>
+                <option value="19">Kokcidiák</option>
+                <option value="20">A hálózatos gyomor idegentest betegsége</option>
+                <option value="21">Egyéb idegentest betegség</option>
+                <option value="22">Felfúvódás</option>
+                <option value="23">A bendő elmozdulása</option>
+                <option value="24">Kéknyelv</option>
+                <option value="25">Kergemarha-kór (BSE)</option>
+                <option value="26">Tarlós-sömör</option>
+                <option value="27">Egyéb</option>
             </select>
         </div>
+
         <div class="form-group">
             <label for="floatingDate">Dátum [Date]:</label>
             <input type="date" id="floatingDate" name="date" required>

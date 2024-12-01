@@ -23,13 +23,7 @@ public class DiseaseLogController {
 
     @GetMapping("/disease_registration")
     public String showDiseaseRegistrationForm(Model model) {
-        List<DiseaseTypes> diseaseTypes = (List<DiseaseTypes>) diseaseTypesCRUD.findAll();
-        List<Animals> animals = (List<Animals>) animalsCRUD.findAll();
-
-        model.addAttribute("diseaseTypes", diseaseTypes);
-        model.addAttribute("animals", animals);
-
-        return "disease_registration"; // Térjünk vissza a regisztrációs oldalra
+        return "disease_registration"; // Térjünk vissza a statikus sablonhoz
     }
 
     @PostMapping("/disease_registration")
