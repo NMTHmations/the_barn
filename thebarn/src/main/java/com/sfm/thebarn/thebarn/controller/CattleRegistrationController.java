@@ -1,12 +1,16 @@
 package com.sfm.thebarn.thebarn.controller;
 
 import com.sfm.thebarn.thebarn.model.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -31,14 +35,38 @@ public class CattleRegistrationController {
     private TypeCodesCRUD typeCodesRepository;
 
     @GetMapping("/cattle_registration")
-    public String showCattleRegistration() {return "cattle_registration";}
+    public String showCattleRegistration(HttpServletRequest request, Model model)
+    {
+        HttpSession current = request.getSession(false); // get current session
+        if (current == null) { // if there is  no session
+            return "redirect:/login"; // redirect to login
+        }
+
+        Users user = (Users) request.getAttribute("user"); // get user from session
+        if (user.getId().equals("admin")) // if user is admin
+        {
+            model.addAttribute("HCinput"); // make holding code input visible
+            return "cattle_registration"; // stay on cattle registration
+        }
+
+        return "cattle_registration"; // stay on cattle registration
+    }
 
     @PostMapping("/cattle_registration")
-    public String cattleRegistration(@RequestParam String selfId, @RequestParam String sex, @RequestParam String breed, @RequestParam String type, @RequestParam String colour, @RequestParam String birthDate, @RequestParam String motherId, @RequestParam String fatherId, @RequestParam String holdingId, Model model) {
+    public String cattleRegistration(HttpServletRequest request, @RequestParam String selfId, @RequestParam String sex, @RequestParam String breed, @RequestParam String type, @RequestParam String colour, @RequestParam String birthDate, @RequestParam String motherId, @RequestParam String fatherId, @RequestParam(required = false) String holdingId, Model model) {
+
+        HttpSession current = request.getSession(false); // get current session
+        if (current == null) { // if there is  no session
+            return "redirect:/login"; // redirect to login
+        }
+        Users user = (Users) request.getAttribute("user"); // get user from session
 
         if (selfId.equals("-")) //if self id is "-"
         {
             model.addAttribute("CDerror", "Érvénytelen saját azonosító!"); // make cattle data error message visible
+            if (user.getId().equals("admin")){ // if user is admin
+                model.addAttribute("HCinput"); // make holding code input visible
+            }
             return "cattle_registration"; // stay on cattle registration
         }
 
@@ -46,15 +74,28 @@ public class CattleRegistrationController {
         if (self != null) //if self id already exists
         {
             model.addAttribute("SIerror", "Már létezik marha ilyen azonosítóval!"); // make self id error message visible
+            if (user.getId().equals("admin")){ // if user is admin
+                model.addAttribute("HCinput"); // make holding code input visible
+            }
             return "cattle_registration"; // stay on cattle registration
         }
 
-        Farms farm = farmsRepository.findById(holdingId).orElse(null); //find submitted holding code
-        if (farm == null) //if holding code doesn't exist
+        Farms farm;
+        if (user.getId().equals("admin")) // if user is admin
         {
-            model.addAttribute("HCerror", "Nem létező tenyészet kódját adta meg!"); // make holding code error message visible
-            return "cattle_registration"; // stay on cattle registration
+            farm = farmsRepository.findById(holdingId).orElse(null); // find submitted holding code
+            if (farm == null) // if holding code doesn't exist
+            {
+                model.addAttribute("HCerror", "Nem létező tenyészet kódját adta meg!"); // make holding code error message visible
+                model.addAttribute("HCinput"); // make holding code input visible
+                return "cattle_registration"; // stay on cattle registration
+            }
         }
+        else
+        {
+            farm = user.getFarmId(); // find user's holding code
+        }
+
 
         Animals mother = animalsRepository.findById(motherId).orElse(null); //find submitted mother id
         if (!motherId.isBlank()) // if left empty, skip
@@ -62,6 +103,9 @@ public class CattleRegistrationController {
             if (mother == null || mother.getSex()) //if mother id doesn't exist or a male
             {
                 model.addAttribute("MIerror", "Nem létező Anya azonosító!<br>(előbb hozza létre az Anya marhát vagy hagyja üresen)"); // make mother id error message visible
+                if (user.getId().equals("admin")){ // if user is admin
+                    model.addAttribute("HCinput"); // make holding code input visible
+                }
                 return "cattle_registration"; // stay on cattle registration
             }
         }
@@ -72,6 +116,9 @@ public class CattleRegistrationController {
             if (father == null || !father.getSex()) //if father id doesn't exist or a female
             {
                 model.addAttribute("FIerror", "Nem létező Apa azonosító!<br>(előbb hozza létre az Apa marhát vagy hagyja üresen)"); // make father id error message visible
+                if (user.getId().equals("admin")){ // if user is admin
+                    model.addAttribute("HCinput"); // make holding code input visible
+                }
                 return "cattle_registration"; // stay on cattle registration
             }
         }
@@ -91,6 +138,9 @@ public class CattleRegistrationController {
         }
         catch (ParseException e) {
             model.addAttribute("Derror", "Dátum formázási hiba, adatok nincsenek mentve!"); // make date error message visible
+            if (user.getId().equals("admin")){ // if user is admin
+                model.addAttribute("HCinput"); // make holding code input visible
+            }
             return "cattle_registration";
         }
 
