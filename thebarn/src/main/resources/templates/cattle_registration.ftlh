@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="/css/cattle_registration.css" rel="stylesheet">
-    <title>The Barn Cattle Registration</title>
+    <title>The Barn Login</title>
 </head>
 <body class="text-center">
     <main class="form-signin">
@@ -584,14 +584,16 @@
                 <label for="floatingFatherId">apa/recipiens azonosító<br>[sire's/recipient's number]:</label>
                 <input type="text" id="floatingFatherId" name="fatherId" style="width: 400px;">
             </div>
-            <div class="form-group">
-                <label for="floatingHoldingId">Tenyészet kódja [Holding code]:</label>
-                <input type="text" id="floatingHoldingId" name="holdingId" style="width: 400px; margin-bottom: 15px" required>
-            </div>
+            <#if HCinput??>
+                <div class="form-group">
+                    <label for="floatingHoldingId">Tenyészet kódja [Holding code]:</label>
+                    <input type="text" id="floatingHoldingId" name="holdingId" style="width: 400px; margin-bottom: 15px" required>
+                </div>
+            </#if>
 
             <button type="button"
                     class="btn btn-outline-primary"
-                     onclick="document.location='search_interface'"
+                     onclick="document.location='/search_interface'"
                      style="border: 2px solid rgb(128,128,128);
                      color: rgb(128,128,128);
                      float: inline-start;
@@ -608,6 +610,9 @@
             </button>
         </form>
 
+        <#if CDerror??>
+            <div style="color: red; margin-top: 15px;">${CDerror}</div>
+        </#if>
         <#if SIerror??>
            <div style="color: red; margin-top: 15px;">${SIerror}</div>
         </#if>
@@ -623,7 +628,33 @@
         <#if Derror??>
             <div style="color: red; margin-top: 15px;">${Derror}</div>
         </#if>
+        <div id="formatError" style="color: red; margin-top: 15px;"></div>
 
+        <script>
+            const inputField = document.getElementById('floatingSelfId');
+            const errorMessage = document.getElementById('formatError');
+            const pattern = /^[A-Z]{2}-\d{5}$/;
+
+            inputField.addEventListener('input', function()
+            {
+                const inputValue = inputField.value;
+
+                if (!pattern.test(inputValue)) {
+                    errorMessage.innerHTML = "Hibás saját azonosító formátum!<br>Helyes formátum: XY-12345";
+                }
+                else {
+                    errorMessage.innerHTML = "";
+                }
+            });
+
+            document.getElementById('codeForm').addEventListener('submit', function(event)
+            {
+                if (!pattern.test(inputField.value))
+                {
+                    event.preventDefault();
+                }
+            });
+        </script>
     </main>
 </body>
 </html>
