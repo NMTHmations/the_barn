@@ -50,8 +50,17 @@
                 </div>
                 <div class="col-sm-1 search-header-generic">
                     <!-- new button -->
-                    <div>
-                        <button class="btn-new"><i class="fa-solid fa-plus"></i></button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-plus"></i></button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Kórelőzmény</a>
+                            <a class="dropdown-item" href="#">Betegség hozzáadása</a>
+                            <a class="dropdown-item" href="#">Tenyészet hozzáadása</a>
+                            <a class="dropdown-item" href="#">Állat hozzáadása</a>
+                            <a class="dropdown-item" href="#">Kijelentkezés</a>
+                            <div class="dropdown-divider"></div>
+                            <p class="dropdown-item disabled">Helló, itt XY!</p>
+                        </div>
                     </div>
                 </div>
             </div>
