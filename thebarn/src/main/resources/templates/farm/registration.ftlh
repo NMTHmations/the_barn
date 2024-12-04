@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Farm Registration</title>
     <style>
         body {
@@ -50,15 +50,27 @@
         button {
             margin-top: 15px;
         }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 <main class="form-register">
-    <form action="/farm-registration" method="post">
+    <form id="farmForm" action="/farm_registration" method="post">
         <h1 class="text-center">Tenyészet Regisztráció</h1>
+
+        <#-- Hibaüzenet megjelenítése -->
+        <#if errorMessage??>
+        <div class="error-message">${errorMessage}</div>
+        </#if>
+
         <div class="form-group">
-            <label for="farmId">Tenyészetkód:</label>
-            <input type="text" id="farmId" name="farmId" required>
+            <label for="floatingSelfId">Tenyészetkód:</label>
+            <input type="text" id="floatingSelfId" name="farmId" required>
         </div>
         <div class="form-group">
             <label for="farmName">Tenyészet Jogi Neve:</label>
@@ -89,10 +101,32 @@
             <input type="password" id="password" name="password" required>
         </div>
         <div class="text-center">
-            <button type="button" class="btn btn-outline-secondary" onclick="document.location='/'">Mégsem</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="location.href='/'">Mégsem</button>
             <button type="submit" class="btn btn-primary">Mentés</button>
         </div>
     </form>
 </main>
+
+<script>
+    const farmIdField = document.getElementById('floatingSelfId');
+    const farmForm = document.getElementById('farmForm');
+    const numberFields = document.querySelectorAll('input[type="number"]');
+
+    farmForm.addEventListener('submit', function (event) {
+        const farmIdValue = farmIdField.value;
+        const farmIdPattern = /^[A-Z]{2}-\d{5}-\d{5}$/;
+
+        if (!farmIdPattern.test(farmIdValue)) {
+            alert("Helytelen tenyészetkód! Helyes formátum: HU-12345-12345");
+            event.preventDefault();
+        }
+    });
+
+    numberFields.forEach(field => {
+        field.addEventListener('input', function () {
+            field.value = field.value.replace(/[^0-9]/g, '');
+        });
+    });
+</script>
 </body>
 </html>
