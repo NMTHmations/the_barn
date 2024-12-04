@@ -39,6 +39,10 @@ public class SearchInterfaceController {
                                       @RequestParam(value="type", required = false)String type) {
 
         List<Animals> animals = (List<Animals>)animalsRepository.findAll();
+        if(!query.isEmpty()) {
+            //animals = animalsRepository.findById(query).stream().toList();
+            animals = (List<Animals>)animalsRepository.findByIdOrFarmIdOrFarmName(query);
+        }
         List<BreedCodes> breeds = (List<BreedCodes>)breedCodeRepository.findAll();
         List<TypeCodes> types = (List<TypeCodes>)typeCodesRepository.findAll();
 
