@@ -42,7 +42,7 @@ public class LoginController {
         if (user != null && user.getPasswd().equals(DigestUtils.sha256Hex(Password))) //if password match
         {
             request.getSession().setAttribute(user.getId(), user.getId());
-            return "redirect:/csillamfasz"; //redirect to home page
+            return "redirect:/"; //redirect to home page
         }
         model.addAttribute("error", "Rossz e-mail és/vagy jelszó!"); // if password mismatch make error message visible
         return "login"; //and stay on login

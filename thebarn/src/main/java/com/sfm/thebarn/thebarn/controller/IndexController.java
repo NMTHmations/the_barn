@@ -17,12 +17,12 @@ public class IndexController {
     public String index(HttpServletRequest request) {
         HttpSession req = request.getSession(false);
         if (req == null) {
-            if (userService.returnList().isEmpty())
-            {
-                return "redirect:/register";
-            }
             return "redirect:/login";
         }
-        return "redirect:/csillamfasz";
+        if (userService.returnList().isEmpty())
+        {
+            return "redirect:/register";
+        }
+        return "csillamfasz";
     }
 }
