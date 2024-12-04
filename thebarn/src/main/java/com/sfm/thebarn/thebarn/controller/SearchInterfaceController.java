@@ -28,7 +28,6 @@ public class SearchInterfaceController {
         model.addAttribute("breeds", breeds);
         model.addAttribute("types", types);
         model.addAttribute("animals", animals);
-        //return "search-interface/index";
         return "search_interface";
     }
 
@@ -46,7 +45,7 @@ public class SearchInterfaceController {
         model.addAttribute("breeds", breeds);
         model.addAttribute("types", types);
         model.addAttribute("animals", animals);
-        //return "search-interface/index";
+        //return "search_interface" + query;
         return "search_interface";
     }
 }

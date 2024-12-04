@@ -19,6 +19,7 @@
                     <input type="search" class="searchbar" placeholder="keresés" name="query">
                     <!-- submit (search) button -->
                     <button class="btn-submit"><i class="fa-solid fa-magnifying-glass btn-submit"></i></button>
+                    <!--<input type="submit" value="fa-solid fa-magnifying-glass btn-submit" class="btn-submit">-->
                 </div>
                 <div class="col-sm-1 search-header-generic">
                     <!-- option 1 checkbox -->
@@ -49,15 +50,15 @@
                     </select>
                 </div>
                 <div class="col-sm-1 search-header-generic">
-                    <!-- new button -->
+                    <!-- dropdown menu -->
                     <div class="btn-group">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-plus"></i></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Kórelőzmény</a>
-                            <a class="dropdown-item" href="#">Betegség hozzáadása</a>
-                            <a class="dropdown-item" href="#">Tenyészet hozzáadása</a>
-                            <a class="dropdown-item" href="#">Állat hozzáadása</a>
-                            <a class="dropdown-item" href="#">Kijelentkezés</a>
+                            <a class="dropdown-item" href="../disease_registration">Betegség hozzáadása</a>
+                            <a class="dropdown-item" href="../registration">Tenyészet hozzáadása</a>
+                            <a class="dropdown-item" href="../cattle_registration">Állat hozzáadása</a>
+                            <a class="dropdown-item" href="../logout">Kijelentkezés</a>
                             <div class="dropdown-divider"></div>
                             <p class="dropdown-item disabled">Helló, itt XY!</p>
                         </div>
@@ -98,10 +99,10 @@
                         ${animal.id}
                     </div>
                     <div class="col-sm-2">
-                        ${animal.farmId.farmName}
+                        ${animal.farmid.farmName}
                     </div>
                     <div class="col-sm-2">
-                        ${animal.farmId.id}
+                        ${animal.farmid.id}
                     </div>
                     <div class="col-sm-2">
                         ${animal.birthDate}
@@ -110,10 +111,10 @@
                         ${animal.sex?string('üsző','bika')}
                     </div>
                     <div class="col-sm-2">
-                        ${animal.breed}
+                        ${animal.breed.name}
                     </div>
                     <div class="col-sm-1">
-                        ${animal.type}
+                        ${animal.type.name}
                     </div>
                 </div>
                 <#else>
