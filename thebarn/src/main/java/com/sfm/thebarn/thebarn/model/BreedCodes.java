@@ -10,11 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Table(name="breedcodes")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 @Builder
 public class BreedCodes {
     @Id

@@ -41,7 +41,7 @@ public class LoginController {
         Users user = usersRepository.findById(Email).orElse(null); //find submitted username
         if (user != null && user.getPasswd().equals(DigestUtils.sha256Hex(Password))) //if password match
         {
-            request.getSession().setAttribute(user.getId(), user.getId());
+            request.getSession().setAttribute("userID", user.getId());
             return "redirect:/"; //redirect to home page
         }
         model.addAttribute("error", "Rossz e-mail és/vagy jelszó!"); // if password mismatch make error message visible

@@ -591,7 +591,7 @@
 
             <button type="button"
                     class="btn btn-outline-primary"
-                     onclick="document.location='search_interface'"
+                     onclick="document.location='/'"
                      style="border: 2px solid rgb(128,128,128);
                      color: rgb(128,128,128);
                      float: inline-start;

@@ -56,11 +56,11 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Kórelőzmény</a>
                             <a class="dropdown-item" href="../disease_registration">Betegség hozzáadása</a>
-                            <a class="dropdown-item" href="../registration">Tenyészet hozzáadása</a>
+                            <a class="dropdown-item" href="../farm-registration">Tenyészet hozzáadása</a>
                             <a class="dropdown-item" href="../cattle_registration">Állat hozzáadása</a>
                             <a class="dropdown-item" href="../logout">Kijelentkezés</a>
                             <div class="dropdown-divider"></div>
-                            <p class="dropdown-item disabled">Helló, itt username</p>
+                            <p class="dropdown-item disabled">Helló, itt ${username!"username"}</p>
                         </div>
                     </div>
                 </div>

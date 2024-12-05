@@ -12,11 +12,7 @@ import java.sql.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Table(name="diseaselog")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 @Builder
 public class DiseaseLog {
     @Id

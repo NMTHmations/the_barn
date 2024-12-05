@@ -13,11 +13,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Builder
 @Table(name="animals")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 @Builder
 public class Animals {
     @Id

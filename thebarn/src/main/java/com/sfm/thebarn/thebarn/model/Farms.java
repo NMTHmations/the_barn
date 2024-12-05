@@ -15,11 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Table(name = "Farms")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 @Builder
 public class Farms {
     @Id

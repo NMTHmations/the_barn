@@ -10,11 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Table(name="typecodes")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 @Builder
 public class TypeCodes {
     @Id
