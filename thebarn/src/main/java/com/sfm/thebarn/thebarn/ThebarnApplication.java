@@ -25,7 +25,7 @@ public class ThebarnApplication {
 				.StreetNumber(1)
 				.build();
 
-		/*Temp breed, type & animal for debugging reasons*/
+		/*Temp breed, type & animals for debugging reasons*/
 		BreedCodes breed = BreedCodes.builder()
 				.id(1)
 				.name("breed1")

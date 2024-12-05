@@ -23,12 +23,12 @@
                 </div>
                 <div class="col-sm-1 search-header-generic">
                     <!-- option 1 checkbox -->
-                    <input type="checkbox" class="checkbox" name="option1">
+                    <input type="checkbox" checked class="checkbox" name="option1">
                     <label class="checkbox-label">üsző</label>
                 </div>
                 <div class="col-sm-1 search-header-generic">
                     <!-- option 2 checkbox -->
-                    <input type="checkbox" class="checkbox" name="option2">
+                    <input type="checkbox" checked class="checkbox" name="option2">
                     <label class="checkbox-label">bika</label>
                 </div>
                 <div class="col-sm-2 search-header-generic">
@@ -45,7 +45,7 @@
                     <select name="type" class="dropdown-generic">
                         <option value="all" selected>minden típus</option>
                         <#list types as type>
-                        <option value="${type.id}}">${type.name}</option>
+                        <option value="${type.id}">${type.name}</option>
                         </#list>
                     </select>
                 </div>
