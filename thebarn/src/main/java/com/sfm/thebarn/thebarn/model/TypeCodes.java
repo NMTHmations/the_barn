@@ -7,6 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name="typecodes")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,4 +24,5 @@ public class TypeCodes {
     public TypeCodes(String name) {
         this.name = name;
     }
+
 }

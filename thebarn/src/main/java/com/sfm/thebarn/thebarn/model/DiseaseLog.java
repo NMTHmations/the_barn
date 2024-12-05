@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 import java.sql.Date;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name="diseaselog")
 @NoArgsConstructor
 @AllArgsConstructor
