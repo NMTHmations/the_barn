@@ -108,7 +108,7 @@ public class CattleRegistrationController {
         }
         else
         {
-            farm = user.getFarmId(); // find user's holding code
+            farm = farmsRepository.findById(user.getFarmId()).orElse(null); // find user's holding code
         }
 
 
