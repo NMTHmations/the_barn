@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="/css/cattle_registration.css" rel="stylesheet">
-    <title>The Barn Login</title>
+    <title>The Barn Cattle Registration</title>
 </head>
 <body class="text-center">
     <main class="form-signin">
-        <form action="/cattle_registration" method="post">
+        <form action="/cattle_registration" method="post" onsubmit="return validateForm()">
             <h1>Szarvasmarha Regisztráció</h1>
             <div class="form-group">
                 <label for="floatingSelfId">saját azonosító [self number]:</label>
@@ -647,13 +647,17 @@
                 }
             });
 
-            document.getElementById('codeForm').addEventListener('submit', function(event)
-            {
-                if (!pattern.test(inputField.value))
-                {
-                    event.preventDefault();
+            function validateForm() {
+                const inputValue = inputField.value;
+
+                if (!pattern.test(inputValue)) {
+                    return false;
                 }
-            });
+
+                else {
+                    return true;
+                }
+            }
         </script>
     </main>
 </body>
