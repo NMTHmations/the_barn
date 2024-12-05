@@ -60,7 +60,7 @@
                             <a class="dropdown-item" href="../cattle_registration">Állat hozzáadása</a>
                             <a class="dropdown-item" href="../logout">Kijelentkezés</a>
                             <div class="dropdown-divider"></div>
-                            <p class="dropdown-item disabled">Helló, itt XY!</p>
+                            <p class="dropdown-item disabled">Helló, itt username</p>
                         </div>
                     </div>
                 </div>

@@ -93,7 +93,6 @@ public class SearchInterfaceController {
         }
 
 
-
         // get all breeds and types
         List<BreedCodes> breeds = (List<BreedCodes>)breedCodeRepository.findAll();
         List<TypeCodes> types = (List<TypeCodes>)typeCodesRepository.findAll();
