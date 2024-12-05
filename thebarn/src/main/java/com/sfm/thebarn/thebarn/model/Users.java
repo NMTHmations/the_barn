@@ -37,9 +37,7 @@ public class Users {
         Passwd = passwd;
     }
 
-    public Farms getFarmId() {
-        return FarmId;
-    }
+    public String getFarmId() { return (FarmId != null) ? FarmId.getId() : null; }
 
     public void setFarmId(Farms FarmId) {
         this.FarmId = FarmId;

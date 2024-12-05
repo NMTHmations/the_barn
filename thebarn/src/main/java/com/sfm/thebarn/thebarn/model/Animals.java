@@ -61,12 +61,12 @@ public class Animals {
 
     /*Getters and setters*/
 
-    public void SetPrevId(String PrevId)
+    public void setPrevId(String PrevId)
     {
         this.PrevId = PrevId;
     }
 
-    public void SetDeathDate(Date DeathDate)
+    public void setDeathDate(Date DeathDate)
     {
         this.DeathDate = DeathDate;
     }
@@ -81,26 +81,19 @@ public class Animals {
         this.id = id;
     }
 
-    public String getFatherId()
-    {
-        return fatherid.getId();
-    }
+    public String getFatherId() { return (motherid != null) ? motherid.getId() : null; }
 
-    public void setFatherId(String fatherId)
-    {
-        fatherid.setId(fatherId);
-    }
+    public void setFatherId(Animals fatherId) { this.fatherid = fatherId; }
 
-    public String getMotherId()
-    {
-        return motherid.getId();
-    }
+    public void setFarmId(Farms farm) { this.farmid = farm; }
 
-    public void setMotherId(String id)
+    public String getMotherId() { return (motherid != null) ? motherid.getId() : null; }
+
+    public void setMotherId(Animals motherId)
     {
-        fatherid.setId(id);
+        this.motherid = motherId;
     }
-    public void SetBirthDate(Date BirthDate)
+    public void setBirthDate(Date BirthDate)
     {
         this.BirthDate = BirthDate;
     }
@@ -120,9 +113,9 @@ public class Animals {
         return PrevId;
     }
 
-    public void setColor(int id)
+    public void setColor(ColourCodes color)
     {
-        color.setId(id);
+        this.color = color;
     }
 
     public String getColor()
@@ -135,15 +128,41 @@ public class Animals {
         return breed.getName();
     }
 
-    public void SetType(int id)
+    public int getBreedId()
     {
-        type.setId(id);
+        return breed.getId();
     }
 
-    public int getType()
+    public int getTypeId()
     {
         return type.getId();
     }
 
+    public int getColorId()
+    {
+        return color.getId();
+    }
+
+    public void setBreed(BreedCodes breed)
+    {
+        this.breed = breed;
+    }
+
+    public void setType(TypeCodes type)
+    {
+        this.type = type;
+    }
+
+    public String getType()
+    {
+        return type.getName();
+    }
+
     public boolean getSex() {return sex;} // needed an additional getter
+
+    public void setSex(boolean sex) { this.sex = sex; } // needed an additional setter
+
+    public String getFarmid() {
+        return farmid.getId();
+    }
 }
