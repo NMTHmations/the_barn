@@ -1,19 +1,11 @@
 package com.sfm.thebarn.thebarn.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
 @Entity
 @Table(name="diseaselog")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Builder
 public class DiseaseLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +20,36 @@ public class DiseaseLog {
     private Date date;
     private String description;
 
+    public DiseaseLog(){}
     public DiseaseLog(DiseaseTypes type, Animals animal, Date date) {
         this.diseaseTypes = type;
         this.animalid = animal;
         this.date = date;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /*Getters and setters*/
+
+    public int getNumber() {
+        return number;
+    }
+    public String GetAnimalId() {
+        return animalid.getId();
+    }
+    public void setAnimalid(Animals animalid) {
+        this.animalid = animalid;
+    }
+    public void SetDate(Date date) {
+        this.date = date;
+    }
+    public Date getDate()
+    {
+        return date;
+    }
+    public String getDescription() {
+        return description;
     }
 }
