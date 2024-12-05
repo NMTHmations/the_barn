@@ -552,8 +552,8 @@
                 <label for="floatingType">típusa [type]:</label>
                 <select id="floatingType" name="type">
                     <option value="1">Kettős hasznosítású</option>
-                    <option value="2">tejelő</option>
-                    <option value="3">húshasznú</option>
+                    <option value="2">Tejhasznú</option>
+                    <option value="3">Húshasznú</option>
                 </select>
             </div>
             <div class="form-group">
@@ -620,10 +620,10 @@
            <div style="color: red; margin-top: 15px;">${HCerror}</div>
         </#if>
         <#if MIerror??>
-            <div style="color: red; margin-top: 15px;">${MIerror?no_esc}</div>
+            <div style="color: red; margin-top: 15px;">${MIerror?html}</div>
         </#if>
         <#if FIerror??>
-            <div style="color: red; margin-top: 15px;">${FIerror?no_esc}</div>
+            <div style="color: red; margin-top: 15px;">${FIerror?html}</div>
         </#if>
         <#if Derror??>
             <div style="color: red; margin-top: 15px;">${Derror}</div>
