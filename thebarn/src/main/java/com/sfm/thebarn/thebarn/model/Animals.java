@@ -1,19 +1,11 @@
 package com.sfm.thebarn.thebarn.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
 @Entity
 @Table(name="animals")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Builder
 public class Animals {
     @Id
     private String id;
@@ -52,6 +44,8 @@ public class Animals {
 
     private String PrevId;
 
+    public Animals() {}
+
     public Animals(String id,Boolean sex,Animals father,Animals mother,Farms farm,Date Birth,ColourCodes color,BreedCodes breed,TypeCodes type)
     {
         this.id = id;
@@ -63,5 +57,112 @@ public class Animals {
         this.color = color;
         this.breed = breed;
         this.type = type;
+    }
+
+    /*Getters and setters*/
+
+    public void setPrevId(String PrevId)
+    {
+        this.PrevId = PrevId;
+    }
+
+    public void setDeathDate(Date DeathDate)
+    {
+        this.DeathDate = DeathDate;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+
+    public String getFatherId() { return (motherid != null) ? motherid.getId() : null; }
+
+    public void setFatherId(Animals fatherId) { this.fatherid = fatherId; }
+
+    public void setFarmId(Farms farm) { this.farmid = farm; }
+
+    public String getMotherId() { return (motherid != null) ? motherid.getId() : null; }
+
+    public void setMotherId(Animals motherId)
+    {
+        this.motherid = motherId;
+    }
+    public void setBirthDate(Date BirthDate)
+    {
+        this.BirthDate = BirthDate;
+    }
+
+    public Date getBirthDate()
+    {
+        return BirthDate;
+    }
+
+    public Date getDeathDate()
+    {
+        return DeathDate;
+    }
+
+    public String getPrevId()
+    {
+        return PrevId;
+    }
+
+    public void setColor(ColourCodes color)
+    {
+        this.color = color;
+    }
+
+    public String getColor()
+    {
+        return color.getName();
+    }
+
+    public String getBreed()
+    {
+        return breed.getName();
+    }
+
+    public int getBreedId()
+    {
+        return breed.getId();
+    }
+
+    public int getTypeId()
+    {
+        return type.getId();
+    }
+
+    public int getColorId()
+    {
+        return color.getId();
+    }
+
+    public void setBreed(BreedCodes breed)
+    {
+        this.breed = breed;
+    }
+
+    public void setType(TypeCodes type)
+    {
+        this.type = type;
+    }
+
+    public String getType()
+    {
+        return type.getName();
+    }
+
+    public boolean getSex() {return sex;} // needed an additional getter
+
+    public void setSex(boolean sex) { this.sex = sex; } // needed an additional setter
+
+    public String getFarmid() {
+        return farmid.getId();
     }
 }
