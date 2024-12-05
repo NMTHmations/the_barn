@@ -11,31 +11,31 @@
     <main class="form-signin">
         <button type="button"
                     class="btn btn-primary"
-                    onclick="document.location='search_interface'"
+                    onclick="document.location='/search_interface'"
                     style="background-color: rgb(128,128,128);
                     border-color: rgb(128,128,128);
                     float: inline-start;
                     margin-bottom: 15px;
                     margin-left: 5px;">
-            vissza
+            Vissza
         </button>
         <button type="button"
                     class="btn btn-outline-primary"
-                    onclick="document.location='medical_history_search'"
+                    onclick="document.location='/medical_history_search'"
                     style="border: 2px solid rgb(128,128,128);
                     color: rgb(128,128,128);
                     margin-bottom: 15px;">
-                kórelőzmény
+                Kórelőzmény
         </button>
         <button type="button"
                     class="btn btn-primary"
-                    onclick="document.location='cattle_edit'"
+                    onclick="document.location='/cattle_edit/${id}'"
                     style="background-color: rgb(128,128,128);
                     border-color: rgb(128,128,128);
                     float: inline-end;
                     margin-bottom: 15px;
                     margin-right: 5px;">
-            módosítás
+            Módosítás
         </button>
         <div class="form">
             <h1>Szarvasmarha ${id}</h1>
