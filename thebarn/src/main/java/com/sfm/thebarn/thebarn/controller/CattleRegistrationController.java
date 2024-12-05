@@ -34,6 +34,9 @@ public class CattleRegistrationController {
     @Autowired
     private TypeCodesCRUD typeCodesRepository;
 
+    @Autowired
+    private UsersCRUD usersRepository;
+
     @GetMapping("/cattle_registration")
     public String showCattleRegistration(HttpServletRequest request, Model model)
     {
@@ -42,10 +45,16 @@ public class CattleRegistrationController {
             return "redirect:/login"; // redirect to login
         }
 
-        Users user = (Users) request.getAttribute("user"); // get user from session
+        Users user = usersRepository.findById((String) current.getAttribute("userid")).orElse(null); // get user from session
+        if (user == null) // if user doesn't exists
+        {
+            current.invalidate(); // end session
+            return "redirect:/login"; // redirect to login
+        }
+
         if (user.getFarmId() == null) // if user is admin
         {
-            model.addAttribute("HCinput"); // make holding code input visible
+            model.addAttribute("HCinput", true); // make holding code input visible
             return "cattle_registration"; // stay on cattle registration
         }
 
@@ -59,13 +68,19 @@ public class CattleRegistrationController {
         if (current == null) { // if there is  no session
             return "redirect:/login"; // redirect to login
         }
-        Users user = (Users) request.getAttribute("user"); // get user from session
+
+        Users user = usersRepository.findById((String) current.getAttribute("userid")).orElse(null); // get user from session
+        if (user == null) // if user doesn't exists
+        {
+            current.invalidate(); // end session
+            return "redirect:/login"; // redirect to login
+        }
 
         if (selfId.equals("-")) //if self id is "-"
         {
             model.addAttribute("CDerror", "Érvénytelen saját azonosító!"); // make cattle data error message visible
             if (user.getFarmId() == null){ // if user is admin
-                model.addAttribute("HCinput"); // make holding code input visible
+                model.addAttribute("HCinput", true); // make holding code input visible
             }
             return "cattle_registration"; // stay on cattle registration
         }
@@ -75,7 +90,7 @@ public class CattleRegistrationController {
         {
             model.addAttribute("SIerror", "Már létezik marha ilyen azonosítóval!"); // make self id error message visible
             if (user.getFarmId() == null){ // if user is admin
-                model.addAttribute("HCinput"); // make holding code input visible
+                model.addAttribute("HCinput", true); // make holding code input visible
             }
             return "cattle_registration"; // stay on cattle registration
         }
@@ -87,7 +102,7 @@ public class CattleRegistrationController {
             if (farm == null) // if holding code doesn't exist
             {
                 model.addAttribute("HCerror", "Nem létező tenyészet kódját adta meg!"); // make holding code error message visible
-                model.addAttribute("HCinput"); // make holding code input visible
+                model.addAttribute("HCinput", true); // make holding code input visible
                 return "cattle_registration"; // stay on cattle registration
             }
         }
@@ -104,7 +119,7 @@ public class CattleRegistrationController {
             {
                 model.addAttribute("MIerror", "Nem létező Anya azonosító!<br>(előbb hozza létre az Anya marhát vagy hagyja üresen)"); // make mother id error message visible
                 if (user.getFarmId() == null){ // if user is admin
-                    model.addAttribute("HCinput"); // make holding code input visible
+                    model.addAttribute("HCinput", true); // make holding code input visible
                 }
                 return "cattle_registration"; // stay on cattle registration
             }
@@ -117,7 +132,7 @@ public class CattleRegistrationController {
             {
                 model.addAttribute("FIerror", "Nem létező Apa azonosító!<br>(előbb hozza létre az Apa marhát vagy hagyja üresen)"); // make father id error message visible
                 if (user.getFarmId() == null){ // if user is admin
-                    model.addAttribute("HCinput"); // make holding code input visible
+                    model.addAttribute("HCinput", true); // make holding code input visible
                 }
                 return "cattle_registration"; // stay on cattle registration
             }
@@ -139,7 +154,7 @@ public class CattleRegistrationController {
         catch (ParseException e) {
             model.addAttribute("Derror", "Dátum formázási hiba, adatok nincsenek mentve!"); // make date error message visible
             if (user.getFarmId() == null){ // if user is admin
-                model.addAttribute("HCinput"); // make holding code input visible
+                model.addAttribute("HCinput", true); // make holding code input visible
             }
             return "cattle_registration";
         }
