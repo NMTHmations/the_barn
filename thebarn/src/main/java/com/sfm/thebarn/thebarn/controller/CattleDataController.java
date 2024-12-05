@@ -1,6 +1,8 @@
 package com.sfm.thebarn.thebarn.controller;
 
 import com.sfm.thebarn.thebarn.model.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,15 +21,41 @@ public class CattleDataController {
     @Autowired
     private FarmsCRUD farmsRepository;
 
+    @Autowired
+    private UsersCRUD usersRepository;
+
     @GetMapping("/cattle-data/{id}")
-    public String showCattleData(@PathVariable String id, Model model) {
+    public String showCattleData(@PathVariable String id, Model model, HttpServletRequest request) {
+
+        HttpSession current = request.getSession(false); // get current session
+        if (current == null) { // if there is  no session
+            return "redirect:/login"; // redirect to login
+        }
+
+        Users user = usersRepository.findById((String) current.getAttribute("userid")).orElse(null); // get user from session
+        if (user == null) // if user doesn't exists
+        {
+            current.invalidate(); // end session
+            return "redirect:/login"; // redirect to login
+        }
+
         Animals animal = animalsRepository.findById(id).orElse(null); // find animal by url
         if (animal == null) {
             return "redirect:/error404";
         }
+
         Farms farm = farmsRepository.findById(animal.getFarmid()).orElse(null); // find farm
         if (farm == null) {
             return "redirect:/error404";
+        }
+
+        if (user.getFarmId() != null) // if user is not admin
+        {
+            if (!user.getFarmId().equals(animal.getFarmid())) // if user doesn't own animal
+            {
+                current.invalidate(); // end session
+                return "redirect:/login"; // redirect to login
+            }
         }
 
         model.addAttribute("id", animal.getId()); // give back data: id
@@ -56,6 +84,7 @@ public class CattleDataController {
         }
 
         if(animal.getMotherId() == null) {
+
             model.addAttribute("motherId", "-"); // give back data: "-" (if doesn't exits)
         }
         else{
