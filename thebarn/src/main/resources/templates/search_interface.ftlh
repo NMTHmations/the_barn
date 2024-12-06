@@ -18,7 +18,7 @@
                     <!-- searchbar -->
                     <input type="search" class="searchbar" placeholder="keresés" name="query">
                     <!-- submit (search) button -->
-                    <button class="btn-submit"><i class="fa-solid fa-magnifying-glass btn-submit"></i></button>
+                    <button id="go-search" class="btn-submit"><i class="fa-solid fa-magnifying-glass btn-submit"></i></button>
                     <!--<input type="submit" value="fa-solid fa-magnifying-glass btn-submit" class="btn-submit">-->
                 </div>
                 <div class="col-sm-1 search-header-generic">
@@ -52,13 +52,15 @@
                 <div class="col-sm-1 search-header-generic">
                     <!-- dropdown menu -->
                     <div class="btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-plus"></i></button>
+                        <button type="button" id="plus_main" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-plus"></i></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Kórelőzmény</a>
-                            <a class="dropdown-item" href="../disease_registration">Betegség hozzáadása</a>
-                            <a class="dropdown-item" href="../farm-registration">Tenyészet hozzáadása</a>
-                            <a class="dropdown-item" href="../cattle_registration">Állat hozzáadása</a>
-                            <a class="dropdown-item" href="../logout">Kijelentkezés</a>
+                            <a class="dropdown-item" id="disease-search" href="#">Kórelőzmény</a>
+                            <a class="dropdown-item" id="disease-registration" href="../disease_registration">Betegség hozzáadása</a>
+                            <#if holding??>
+                                <a class="dropdown-item" id="farm-registration" href="../farm-registration">${holding}</a>
+                            </#if>
+                            <a class="dropdown-item" id="cattle-registration" href="../cattle_registration">Állat hozzáadása</a>
+                            <a class="dropdown-item" id="logout" href="../logout">Kijelentkezés</a>
                             <div class="dropdown-divider"></div>
                             <p class="dropdown-item disabled">Helló, itt ${username!"username"}</p>
                         </div>

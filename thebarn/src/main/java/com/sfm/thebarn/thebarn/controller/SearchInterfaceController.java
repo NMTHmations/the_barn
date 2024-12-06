@@ -52,6 +52,9 @@ public class SearchInterfaceController {
         List<Animals> animals = animalsList(usersCRUD.findById(username).get());
         List<BreedCodes> breeds = (List<BreedCodes>)breedCodeRepository.findAll();
         List<TypeCodes> types = (List<TypeCodes>)typeCodesRepository.findAll();
+        if (usersCRUD.findById(username).get().FarmId == null) {
+            model.addAttribute("holding","Tenyészet hozzáadása");
+        }
         model.addAttribute("breeds", breeds);
         model.addAttribute("types", types);
         model.addAttribute("animals", animals);
@@ -75,8 +78,9 @@ public class SearchInterfaceController {
         if(!query.isEmpty() && usr.FarmId == null) {
             //animals = animalsRepository.findById(query).stream().toList();
             animals = (List<Animals>)animalsRepository.findByIdOrFarmIdOrFarmName(query);
+            model.addAttribute("holding","Tenyészet hozzáadása");
         }
-        else if (!query.isEmpty() && usr.FarmId!= null)
+        else if (!query.isEmpty() && usr.FarmId != null)
         {
             animals = (List<Animals>) animalsRepository.findByIdFixedFarmId(query, usr.FarmId.getId());
         }
@@ -133,7 +137,8 @@ public class SearchInterfaceController {
         model.addAttribute("breeds", breeds);
         model.addAttribute("types", types);
         model.addAttribute("animals", animals);
-
+        model.addAttribute("breedCodes", breeds);
+        model.addAttribute("username",userID);
         return "search_interface";
     }
 }

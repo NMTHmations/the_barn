@@ -595,7 +595,8 @@
                      style="border: 2px solid rgb(128,128,128);
                      color: rgb(128,128,128);
                      float: inline-start;
-                     margin-top: 15px;">
+                     margin-top: 15px;"
+                    name="cancel-button">
                 Mégse
             </button>
             <button type="submit"
@@ -603,7 +604,8 @@
                     style="background-color: rgb(128,128,128);
                     border-color: rgb(128,128,128);
                     float: inline-end;
-                    margin-top: 15px;">
+                    margin-top: 15px;"
+                    name="submit-button">
                 Mentés
             </button>
         </form>
