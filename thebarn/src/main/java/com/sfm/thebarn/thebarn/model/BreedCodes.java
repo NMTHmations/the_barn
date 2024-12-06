@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Table(name="breedcodes")
+@Builder
 public class BreedCodes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

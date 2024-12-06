@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Table(name="typecodes")
+@Builder
 public class TypeCodes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

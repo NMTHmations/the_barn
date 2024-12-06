@@ -12,8 +12,8 @@ import java.sql.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Table(name="diseaselog")
+@Builder
 public class DiseaseLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

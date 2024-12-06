@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Table(name="colourcodes")
+@Builder
 public class ColourCodes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -17,5 +17,12 @@ public interface AnimalsCRUD extends CrudRepository<Animals, String> {
             "a.farmid.id LIKE CONCAT('%',:query,'%') or " +
             "a.farmid.FarmName LIKE CONCAT('%',:query,'%')")
     List<Animals> findByIdOrFarmIdOrFarmName(@RequestParam(value = "query", required = false) String query);
+    @Query("select a from Animals a where "+
+            "a.farmid.id = :query ")
+    List<Animals> findAllByFarmId(@RequestParam(value = "query",required = false) String query);
+    @Query("select a from Animals a where "+
+            "a.id LIKE CONCAT('%',:query,'%') and "+
+            "a.farmid.id = :farmid ")
+    List<Animals> findByIdFixedFarmId(@RequestParam(value = "query",required = false) String query,@RequestParam(value = "query",required = true) String farmid);
 
 }
