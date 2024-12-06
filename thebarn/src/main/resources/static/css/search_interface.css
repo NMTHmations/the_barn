@@ -106,3 +106,8 @@ input[type='checkbox']:checked {
     border-bottom: 1px solid;
     font-weight: 450;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}

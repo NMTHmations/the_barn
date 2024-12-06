@@ -24,5 +24,6 @@ public interface AnimalsCRUD extends CrudRepository<Animals, String> {
             "a.id LIKE CONCAT('%',:query,'%') and "+
             "a.farmid.id = :farmid ")
     List<Animals> findByIdFixedFarmId(@RequestParam(value = "query",required = false) String query,@RequestParam(value = "query",required = true) String farmid);
-
+    List<Animals> findBymotherid(Animals animal);
+    List<Animals> findByfatherid(Animals animal);
 }

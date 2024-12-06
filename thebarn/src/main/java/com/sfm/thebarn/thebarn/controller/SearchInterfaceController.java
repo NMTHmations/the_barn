@@ -91,14 +91,14 @@ public class SearchInterfaceController {
             for(var animal : animals) {
                 // if 'üsző' was checked
                 if(option1 != null && !option1.isEmpty()) {
-                    if(animal.isSex()) {
+                    if(animal.getSex()) {
                         searchResults.add(animal);
                     }
                 }
 
                 // if 'bika' was checked
                 if(option2 != null && !option2.isEmpty()) {
-                    if(!animal.isSex()) {
+                    if(!animal.getSex()) {
                         searchResults.add(animal);
                     }
                 }

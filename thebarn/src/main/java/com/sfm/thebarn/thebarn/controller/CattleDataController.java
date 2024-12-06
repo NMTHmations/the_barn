@@ -32,7 +32,7 @@ public class CattleDataController {
             return "redirect:/login"; // redirect to login
         }
 
-        Users user = usersRepository.findById((String) current.getAttribute("userid")).orElse(null); // get user from session
+        Users user = usersRepository.findById((String) current.getAttribute("userID")).orElse(null); // get user from session
         if (user == null) // if user doesn't exists
         {
             current.invalidate(); // end session
@@ -44,7 +44,7 @@ public class CattleDataController {
             return "redirect:/error404";
         }
 
-        Farms farm = farmsRepository.findById(animal.getFarmid()).orElse(null); // find farm
+        Farms farm = farmsRepository.findById(animal.getFarmid().getId()).orElse(null); // find farm
         if (farm == null) {
             return "redirect:/error404";
         }
@@ -65,9 +65,9 @@ public class CattleDataController {
         else{
             model.addAttribute("sex", "nőivar (üsző) [Female]"); // give back data: if sex female
         }
-        model.addAttribute("breed", animal.getBreed()); // give back data: breed
-        model.addAttribute("type", animal.getType()); // give back data: type
-        model.addAttribute("colour", animal.getColor()); // give back data: colour
+        model.addAttribute("breed", animal.getBreed().getName()); // give back data: breed
+        model.addAttribute("type", animal.getType().getName()); // give back data: type
+        model.addAttribute("colour", animal.getColor().getName()); // give back data: colour
         model.addAttribute("birthDate", animal.getBirthDate()); // give back data: birthdate
         if(animal.getDeathDate() == null) {
             model.addAttribute("deathDate", "-"); // give back data: "-" (if doesn't exits)
@@ -83,22 +83,22 @@ public class CattleDataController {
             model.addAttribute("prevId", animal.getPrevId()); // give back data: previous id (if exits)
         }
 
-        if(animal.getMotherId() == null) {
+        if(animal.getMotherid() == null) {
 
             model.addAttribute("motherId", "-"); // give back data: "-" (if doesn't exits)
         }
         else{
-            model.addAttribute("motherId", animal.getMotherId()); // give back data: mother id (if exits)
+            model.addAttribute("motherId", animal.getFatherid()); // give back data: mother id (if exits)
         }
 
-        if(animal.getFatherId() == null) {
+        if(animal.getFatherid() == null) {
             model.addAttribute("fatherId", "-"); // give back data: "-" (if doesn't exits)
         }
         else{
-            model.addAttribute("fatherId", animal.getFatherId()); // give back data: father id (if exits)
+            model.addAttribute("fatherId", animal.getFatherid()); // give back data: father id (if exits)
         }
         model.addAttribute("farmName", farm.getFarmName()); // give back data: farm name
-        model.addAttribute("farmId", animal.getFarmid()); // give back data: farm id
+        model.addAttribute("farmId", animal.getFarmid().getId()); // give back data: farm id
         model.addAttribute("ZIPCode", String.valueOf(farm.getZIPCode())); // give back data: zip code
         model.addAttribute("settlement", farm.getSettlement()); // give back data: settlement
         model.addAttribute("street", farm.getStreet()); // give back data: street

@@ -51,3 +51,11 @@ h1 {
     margin-right: 20px;
     margin-bottom: 0px;
 }
+
+.btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active {
+    background-color: #696969 !important;
+}
+
+.btn.btn-outline-primary:hover, .btn.btn-outline-primary:focus, .btn.btn-outline-primary:active {
+    background-color: #c0c0c0;
+}

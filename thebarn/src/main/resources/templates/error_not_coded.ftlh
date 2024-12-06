@@ -9,9 +9,9 @@
 </head>
 <body>
 <div style="align-content: center; margin: auto">
-<h1>Upszika</h1>
+<h1 style="margin: auto;text-align: center">Upszika</h1>
 <br>
-<p>Valami hiba történt</p>
+<p style="margin: auto;text-align: center">Valami hiba történt</p>
 <br>
 <a href="/"><button type="button" class="btn btn-outline-success">Vissza a főoldalra</button></a>
 </div>

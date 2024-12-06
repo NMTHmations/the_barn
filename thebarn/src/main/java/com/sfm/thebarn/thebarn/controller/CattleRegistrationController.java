@@ -75,7 +75,7 @@ public class CattleRegistrationController {
         Animals mother = animalsRepository.findById(motherId).orElse(null); //find submitted mother id
         if (!motherId.isBlank()) // if left empty, skip
         {
-            if (mother == null || mother.isSex()) //if mother id doesn't exist or a male
+            if (mother == null || mother.getSex()) //if mother id doesn't exist or a male
             {
                 model.addAttribute("MIerror", "Nem létező Anya azonosító!<br>(előbb hozza létre az Anya marhát vagy hagyja üresen)"); // make mother id error message visible
                 return "cattle_registration"; // stay on cattle registration
@@ -85,7 +85,7 @@ public class CattleRegistrationController {
         Animals father = animalsRepository.findById(fatherId).orElse(null); //find submitted father id
         if (!fatherId.isBlank()) //if not empty then skip
         {
-            if (father == null || !father.isSex()) //if father id doesn't exist or a female
+            if (father == null || !father.getSex()) //if father id doesn't exist or a female
             {
                 model.addAttribute("FIerror", "Nem létező Apa azonosító!<br>(előbb hozza létre az Apa marhát vagy hagyja üresen)"); // make father id error message visible
                 return "cattle_registration"; // stay on cattle registration

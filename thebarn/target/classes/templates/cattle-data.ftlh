@@ -5,10 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="/css/cattle_data.css" rel="stylesheet">
-    <title>The Barn Login</title>
+    <title>The Barn Cattle Data</title>
 </head>
 <body class="text-center">
     <main class="form-signin">
+        <button type="button"
+                    class="btn btn-primary"
+                    onclick="document.location='/search_interface'"
+                    style="background-color: rgb(128,128,128);
+                    border-color: rgb(128,128,128);
+                    float: inline-start;
+                    margin-bottom: 15px;
+                    margin-left: 5px;">
+            Vissza
+        </button>
+        <button type="button"
+                    class="btn btn-outline-primary"
+                    onclick="document.location='/medical_history_search'"
+                    style="border: 2px solid rgb(128,128,128);
+                    color: rgb(128,128,128);
+                    margin-bottom: 15px;">
+                Kórelőzmény
+        </button>
+        <button type="button"
+                    class="btn btn-primary"
+                    onclick="document.location='/cattle_edit/${id}'"
+                    style="background-color: rgb(128,128,128);
+                    border-color: rgb(128,128,128);
+                    float: inline-end;
+                    margin-bottom: 15px;
+                    margin-right: 5px;">
+            Módosítás
+        </button>
         <div class="form">
             <h1>Szarvasmarha ${id}</h1>
             <div class="form-group">

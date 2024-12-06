@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\sfm\thebarn\thebarn\model\Users.class
 com\sfm\thebarn\thebarn\model\BreedCodeCRUD.class
 com\sfm\thebarn\thebarn\model\FarmsCRUD.class
@@ -15,5 +16,26 @@ com\sfm\thebarn\thebarn\controller\CattleRegistrationController.class
 com\sfm\thebarn\thebarn\model\UsersCRUD.class
 com\sfm\thebarn\thebarn\ThebarnApplication.class
 com\sfm\thebarn\thebarn\model\BreedCodes.class
+=======
+com\sfm\thebarn\thebarn\model\TypeCodesCRUD.class
+com\sfm\thebarn\thebarn\model\DiseaseLogCRUD.class
+com\sfm\thebarn\thebarn\model\DiseaseLog.class
+com\sfm\thebarn\thebarn\model\Farms.class
+com\sfm\thebarn\thebarn\model\ColourCodesCRUD.class
+com\sfm\thebarn\thebarn\model\UsersCRUD.class
+com\sfm\thebarn\thebarn\model\BreedCodes.class
+com\sfm\thebarn\thebarn\model\Users.class
+com\sfm\thebarn\thebarn\model\BreedCodeCRUD.class
+com\sfm\thebarn\thebarn\model\FarmsCRUD.class
+com\sfm\thebarn\thebarn\model\Animals.class
+com\sfm\thebarn\thebarn\controller\Error404Controller.class
+com\sfm\thebarn\thebarn\model\AnimalsCRUD.class
+com\sfm\thebarn\thebarn\ServletInitializer.class
+com\sfm\thebarn\thebarn\model\ColourCodes.class
+com\sfm\thebarn\thebarn\model\TypeCodes.class
+com\sfm\thebarn\thebarn\controller\CattleDataController.class
+com\sfm\thebarn\thebarn\controller\CattleRegistrationController.class
+com\sfm\thebarn\thebarn\ThebarnApplication.class
+>>>>>>> feature/cattle-data
 com\sfm\thebarn\thebarn\model\DiseaseTypesCRUD.class
 com\sfm\thebarn\thebarn\model\DiseaseTypes.class

@@ -11,7 +11,7 @@
         <div class="alert alert-danger text-center">
             <h2>Hiba</h2>
             <p>Nem található szarvasmarha ilyen azonosítóval az ön tenyészetében!</p>
-            <button onclick="document.location='/search_interface'" class="btn btn-primary mt-3">Vissza a kereséshez</button>
+            <button onclick="document.location='/" class="btn btn-primary mt-3">Vissza a kereséshez</button>
         </div>
     </div>
 </body>

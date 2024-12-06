@@ -98,25 +98,25 @@
                 <#list animals as animal>
                 <div class="row table-row">
                     <div class="col-sm-2">
-                        ${animal.id}
+                        <a href="/cattle-data/${animal.id}">${animal.id}</a>
                     </div>
                     <div class="col-sm-2">
-                        ${animal.farmid.farmName}
+                        <a href="/cattle-data/${animal.id}">${animal.farmid.farmName}</a>
                     </div>
                     <div class="col-sm-2">
-                        ${animal.farmid.id}
+                        <a href="/cattle-data/${animal.id}">${animal.farmid.id}</a>
                     </div>
                     <div class="col-sm-2">
-                        ${animal.birthDate}
+                        <a href="/cattle-data/${animal.id}">${animal.birthDate}</a>
                     </div>
                     <div class="col-sm-1">
-                        ${animal.sex?string('üsző','bika')}
+                        <a href="/cattle-data/${animal.id}">${animal.sex?string('üsző','bika')}</a>
                     </div>
                     <div class="col-sm-2">
-                        ${animal.breed.name}
+                        <a href="/cattle-data/${animal.id}">${animal.breed.name}</a>
                     </div>
                     <div class="col-sm-1">
-                        ${animal.type.name}
+                        <a href="/cattle-data/${animal.id}">${animal.type.name}</a>
                     </div>
                 </div>
                 <#else>
