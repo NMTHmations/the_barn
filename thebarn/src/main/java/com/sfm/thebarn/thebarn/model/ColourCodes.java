@@ -7,10 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="colourcodes")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Table(name="colourcodes")
 @Builder
 public class ColourCodes {
     @Id

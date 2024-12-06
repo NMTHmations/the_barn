@@ -7,10 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="breedcodes")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Table(name="breedcodes")
 @Builder
 public class BreedCodes {
     @Id

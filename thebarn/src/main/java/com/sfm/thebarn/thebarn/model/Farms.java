@@ -1,5 +1,6 @@
 package com.sfm.thebarn.thebarn.model;
 
+import jakarta.persistence.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -8,12 +9,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Entity
-@Table(name = "Farms")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Table(name = "Farms")
 @Builder
 public class Farms {
     @Id
