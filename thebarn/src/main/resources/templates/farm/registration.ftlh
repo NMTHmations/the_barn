@@ -60,7 +60,7 @@
 </head>
 <body>
 <main class="form-register">
-    <form id="farmForm" action="/farm_registration" method="post">
+    <form id="farmForm" action="/farm-registration" method="post">
         <h1 class="text-center">Tenyészet Regisztráció</h1>
 
         <#-- Hibaüzenet megjelenítése -->
