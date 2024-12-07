@@ -11,7 +11,7 @@
     <main class="form-signin">
         <button type="button"
                     class="btn btn-primary"
-                    onclick="document.location='/search_interface'"
+                    onclick="document.location='/'"
                     style="background-color: rgb(128,128,128);
                     border-color: rgb(128,128,128);
                     float: inline-start;

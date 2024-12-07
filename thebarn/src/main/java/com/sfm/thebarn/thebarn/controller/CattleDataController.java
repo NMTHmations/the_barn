@@ -51,7 +51,7 @@ public class CattleDataController {
 
         if (user.getFarmId() != null) // if user is not admin
         {
-            if (!user.getFarmId().equals(animal.getFarmid())) // if user doesn't own animal
+            if (!user.getFarmId().getId().equals(animal.getFarmid().getId())) // if user doesn't own animal
             {
                 current.invalidate(); // end session
                 return "redirect:/login"; // redirect to login

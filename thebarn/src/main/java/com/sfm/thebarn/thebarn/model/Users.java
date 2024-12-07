@@ -1,7 +1,14 @@
 package com.sfm.thebarn.thebarn.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name="Users")
 public class Users {
@@ -12,15 +19,10 @@ public class Users {
     @OneToOne
     @JoinColumn(name = "FarmId")
     public Farms FarmId;
-    public Users() {}
-    public Users(String id, String Passwd, Farms Farms) {
-        this.id = id;
-        this.Passwd = Passwd;
-        this.FarmId = Farms;
-    }
 
     /*Getters and setters*/
 
+    /*
     public String getId() {
         return id;
     }
@@ -41,5 +43,5 @@ public class Users {
 
     public void setFarmId(Farms FarmId) {
         this.FarmId = FarmId;
-    }
+    }*/
 }

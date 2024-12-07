@@ -74,6 +74,15 @@
             Mentés
         </button>
     </form>
+    <#if IDerror??>
+        <div style="color: red; margin-top: 15px;">${IDerror}</div>
+    </#if>
+    <#if FarmIDerror??>
+        <div style="color: red; margin-top: 15px;">${FarmIDerror}</div>
+    </#if>
+    <#if LengthError??>
+        <div style="color: red; margin-top: 15px;">${LengthError}</div>
+    </#if>
 </main>
 </body>
 </html>
