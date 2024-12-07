@@ -9,7 +9,7 @@
 </head>
 <body class="text-center">
     <main class="form-signin">
-        <form action="/cattle_registration" method="post">
+        <form action="/cattle_registration" method="post" onsubmit="return validateForm()">
             <h1>Szarvasmarha Regisztráció</h1>
             <div class="form-group">
                 <label for="floatingSelfId">saját azonosító [self number]:</label>
@@ -552,8 +552,8 @@
                 <label for="floatingType">típusa [type]:</label>
                 <select id="floatingType" name="type">
                     <option value="1">Kettős hasznosítású</option>
-                    <option value="2">tejelő</option>
-                    <option value="3">húshasznú</option>
+                    <option value="2">Tejhasznú</option>
+                    <option value="3">Húshasznú</option>
                 </select>
             </div>
             <div class="form-group">
@@ -584,10 +584,12 @@
                 <label for="floatingFatherId">apa/recipiens azonosító<br>[sire's/recipient's number]:</label>
                 <input type="text" id="floatingFatherId" name="fatherId" style="width: 400px;">
             </div>
-            <div class="form-group">
-                <label for="floatingHoldingId">Tenyészet kódja [Holding code]:</label>
-                <input type="text" id="floatingHoldingId" name="holdingId" style="width: 400px; margin-bottom: 15px" required>
-            </div>
+            <#if HCinput??>
+                <div class="form-group">
+                    <label for="floatingHoldingId">Tenyészet kódja [Holding code]:</label>
+                    <input type="text" id="floatingHoldingId" name="holdingId" style="width: 400px; margin-bottom: 15px" required>
+                </div>
+            </#if>
 
             <button type="button"
                     class="btn btn-outline-primary"
@@ -610,6 +612,9 @@
             </button>
         </form>
 
+        <#if CDerror??>
+            <div style="color: red; margin-top: 15px;">${CDerror}</div>
+        </#if>
         <#if SIerror??>
            <div style="color: red; margin-top: 15px;">${SIerror}</div>
         </#if>
@@ -617,15 +622,45 @@
            <div style="color: red; margin-top: 15px;">${HCerror}</div>
         </#if>
         <#if MIerror??>
-            <div style="color: red; margin-top: 15px;">${MIerror?no_esc}</div>
+            <div style="color: red; margin-top: 15px;">${MIerror?html}</div>
         </#if>
         <#if FIerror??>
-            <div style="color: red; margin-top: 15px;">${FIerror?no_esc}</div>
+            <div style="color: red; margin-top: 15px;">${FIerror?html}</div>
         </#if>
         <#if Derror??>
             <div style="color: red; margin-top: 15px;">${Derror}</div>
         </#if>
+        <div id="formatError" style="color: red; margin-top: 15px;"></div>
 
+        <script>
+            const inputField = document.getElementById('floatingSelfId');
+            const errorMessage = document.getElementById('formatError');
+            const pattern = /^[A-Z]{2}-\d{5}$/;
+
+            inputField.addEventListener('input', function()
+            {
+                const inputValue = inputField.value;
+
+                if (!pattern.test(inputValue)) {
+                    errorMessage.innerHTML = "Hibás saját azonosító formátum!<br>Helyes formátum: XY-12345";
+                }
+                else {
+                    errorMessage.innerHTML = "";
+                }
+            });
+
+            function validateForm() {
+                const inputValue = inputField.value;
+
+                if (!pattern.test(inputValue)) {
+                    return false;
+                }
+
+                else {
+                    return true;
+                }
+            }
+        </script>
     </main>
 </body>
 </html>

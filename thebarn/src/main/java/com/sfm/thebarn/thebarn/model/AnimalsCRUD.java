@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+import java.util.List;
+
 @Repository
 public interface AnimalsCRUD extends CrudRepository<Animals, String> {
     //todo vv temp remove before final | working query
