@@ -46,7 +46,7 @@ public class CattleRegistrationController {
             return "redirect:/login"; // redirect to login
         }
 
-        Users user = usersRepository.findById((String) current.getAttribute("userid")).orElse(null); // get user from session
+        Users user = usersRepository.findById((String) current.getAttribute("userID")).orElse(null); // get user from session
         if (user == null) // if user doesn't exists
         {
             current.invalidate(); // end session
@@ -70,7 +70,7 @@ public class CattleRegistrationController {
             return "redirect:/login"; // redirect to login
         }
 
-        Users user = usersRepository.findById((String) current.getAttribute("userid")).orElse(null); // get user from session
+        Users user = usersRepository.findById((String) current.getAttribute("userID")).orElse(null); // get user from session
         if (user == null) // if user doesn't exists
         {
             current.invalidate(); // end session
@@ -109,7 +109,7 @@ public class CattleRegistrationController {
         }
         else
         {
-            farm = farmsRepository.findById(user.getFarmId()).orElse(null); // find user's holding code
+            farm = farmsRepository.findById(user.getFarmId().getId()).orElse(null); // find user's holding code
         }
 
 

@@ -622,10 +622,10 @@
            <div style="color: red; margin-top: 15px;">${HCerror}</div>
         </#if>
         <#if MIerror??>
-            <div style="color: red; margin-top: 15px;">${MIerror?html}</div>
+            <div style="color: red; margin-top: 15px;">${MIerror?no_esc}</div>
         </#if>
         <#if FIerror??>
-            <div style="color: red; margin-top: 15px;">${FIerror?html}</div>
+            <div style="color: red; margin-top: 15px;">${FIerror?no_esc}</div>
         </#if>
         <#if Derror??>
             <div style="color: red; margin-top: 15px;">${Derror}</div>
