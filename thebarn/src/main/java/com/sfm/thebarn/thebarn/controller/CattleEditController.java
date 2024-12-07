@@ -42,7 +42,7 @@ public class CattleEditController {
             return "redirect:/login"; // redirect to login
         }
 
-        Users user = usersRepository.findById((String) current.getAttribute("userid")).orElse(null); // get user from session
+        Users user = usersRepository.findById((String) current.getAttribute("userID")).orElse(null); // get user from session
         if (user == null) // if user doesn't exists
         {
             current.invalidate(); // end session
@@ -66,7 +66,7 @@ public class CattleEditController {
         else // if user is admin
         {
             model.addAttribute("HCinput", true); // make holding code input visible
-            model.addAttribute("animalHoldingCode", animal.getFarmid()); // give back holding code value
+            model.addAttribute("animalHoldingCode", animal.getFarmid().getId()); // give back holding code value
         }
 
         if (error != null) {
@@ -80,9 +80,9 @@ public class CattleEditController {
         // give back data of current animal*
         model.addAttribute("animalId", animal.getId());
         model.addAttribute("animalSex", animal.getSex());
-        model.addAttribute("animalBreed", animal.getBreedId());
-        model.addAttribute("animalColor", animal.getColorId());
-        model.addAttribute("animalType", animal.getTypeId());
+        model.addAttribute("animalBreed", animal.getBreed().getId());
+        model.addAttribute("animalColor", animal.getColor().getId());
+        model.addAttribute("animalType", animal.getType().getId());
         model.addAttribute("animalBirthDate", animal.getBirthDate());
         if(animal.getDeathDate() == null) {
             model.addAttribute("animalDeathDate", ""); // give back data: "-" (if doesn't exits)
@@ -98,19 +98,19 @@ public class CattleEditController {
             model.addAttribute("animalPrevId", animal.getPrevId()); // give back data: previous id (if exits)
         }
 
-        if(animal.getMotherId() == null) {
+        if(animal.getMotherid() == null) {
 
             model.addAttribute("animalMotherId", ""); // give back data: "-" (if doesn't exits)
         }
         else{
-            model.addAttribute("animalMotherId", animal.getMotherId()); // give back data: mother id (if exits)
+            model.addAttribute("animalMotherId", animal.getMotherid().getId()); // give back data: mother id (if exits)
         }
 
-        if(animal.getFatherId() == null) {
+        if(animal.getFatherid() == null) {
             model.addAttribute("animalFatherId", ""); // give back data: "-" (if doesn't exits)
         }
         else{
-            model.addAttribute("animalFatherId", animal.getFatherId()); // give back data: father id (if exits)
+            model.addAttribute("animalFatherId", animal.getFatherid().getId()); // give back data: father id (if exits)
         }
         // give back data of current animal*
 
@@ -167,7 +167,7 @@ public class CattleEditController {
         }
         else
         {
-            farm = farmsRepository.findById(user.getFarmId()).orElse(null); // find user's holding code
+            farm = farmsRepository.findById(user.getFarmId().getId()).orElse(null); // find user's holding code
         }
 
 
@@ -237,9 +237,9 @@ public class CattleEditController {
         try {
             //setting values*
             animal.setSex(zex);
-            animal.setFatherId(father);
-            animal.setMotherId(mother);
-            animal.setFarmId(farm);
+            animal.setFatherid(father);
+            animal.setMotherid(mother);
+            animal.setFarmid(farm);
             animal.setBirthDate(sqlBirthDate);
             animal.setDeathDate(sqlDeathDate);
             animal.setPrevId(previousId);

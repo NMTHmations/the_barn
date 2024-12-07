@@ -619,7 +619,7 @@
         </form>
 
         <#if error??>
-            <div style="color: red; margin-top: 15px;">${error?html}</div>
+            <div style="color: red; margin-top: 15px;">${error?no_esc}</div>
         </#if>
         <div id="formatError" style="color: red; margin-top: 15px;"></div>
 
