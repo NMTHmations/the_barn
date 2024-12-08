@@ -34,7 +34,7 @@
 <body>
 
 <div class="container">
-    <h3 class="text-success mb-3">Regisztráció</h3>
+    <h3 class="text-success mb-3">Telepítés - Regisztráció</h3>
     <hr>
     <!-- Hibaüzenet csak akkor jelenik meg, ha a felhasználó próbálkozott a regisztrációval -->
     <#if attempted?? && attempted == true>
