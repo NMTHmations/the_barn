@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
@@ -49,8 +50,8 @@ public class DiseaseLogController {
             @RequestParam("date") Date date,
             @RequestParam(value = "description", defaultValue = "") String description,
             Model model,
-            HttpServletRequest request
-    ) {
+            HttpServletRequest request,
+            RedirectAttributes redirectAttributes) {
         if (animalsCRUD.findById(animalId).isEmpty()) // if the animal don't exists
         {
             model.addAttribute("IDerror","A megadott állat nem létezik!");
@@ -82,6 +83,7 @@ public class DiseaseLogController {
         diseaseLog.setDescription(description);
 
         diseaseLogCRUD.save(diseaseLog);
+        redirectAttributes.addFlashAttribute("alert",true);
         return "redirect:/";
     }
 }

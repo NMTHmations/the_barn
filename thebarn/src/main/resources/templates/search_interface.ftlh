@@ -10,6 +10,12 @@
         <script src="https://kit.fontawesome.com/19314415a0.js" crossorigin="anonymous"></script>
     </head>
     <body>
+    <#if alert??>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Sikeres mentés!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    </#if>
         <form action="" method="post">
         <div class="container-fluid">
             <!-- page header -->
@@ -24,12 +30,12 @@
                 <div class="col-sm-1 search-header-generic">
                     <!-- option 1 checkbox -->
                     <input type="checkbox" checked class="checkbox" name="option1">
-                    <label class="checkbox-label">üsző</label>
+                    <label class="checkbox-label">bika</label>
                 </div>
                 <div class="col-sm-1 search-header-generic">
                     <!-- option 2 checkbox -->
                     <input type="checkbox" checked class="checkbox" name="option2">
-                    <label class="checkbox-label">bika</label>
+                    <label class="checkbox-label">üsző</label>
                 </div>
                 <div class="col-sm-2 search-header-generic">
                     <!--breed dropdown options-->

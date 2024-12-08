@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -63,7 +64,7 @@ public class CattleRegistrationController {
     }
 
     @PostMapping("/cattle_registration")
-    public String cattleRegistration(HttpServletRequest request, @RequestParam String selfId, @RequestParam String sex, @RequestParam String breed, @RequestParam String type, @RequestParam String colour, @RequestParam String birthDate, @RequestParam String motherId, @RequestParam String fatherId, @RequestParam(required = false) String holdingId, Model model) {
+    public String cattleRegistration(HttpServletRequest request, @RequestParam String selfId, @RequestParam String sex, @RequestParam String breed, @RequestParam String type, @RequestParam String colour, @RequestParam String birthDate, @RequestParam String motherId, @RequestParam String fatherId, @RequestParam(required = false) String holdingId, Model model, RedirectAttributes redirectAttributes) {
 
         HttpSession current = request.getSession(false); // get current session
         if (current == null) { // if there is  no session
@@ -160,6 +161,7 @@ public class CattleRegistrationController {
             return "cattle_registration";
         }
 
+        redirectAttributes.addFlashAttribute("alert",true);
         //return "search_interface";
         return "redirect:/"; //maybe the other return is enough once there is actually a page like that
     }

@@ -61,8 +61,8 @@ public class CattleEditController {
                 current.invalidate(); // end session
                 return "redirect:/login"; // redirect to login
             }
+            model.addAttribute("HCinput", null);
         }
-
         else // if user is admin
         {
             model.addAttribute("HCinput", true); // make holding code input visible

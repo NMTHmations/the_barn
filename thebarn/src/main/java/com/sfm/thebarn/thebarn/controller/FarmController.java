@@ -81,6 +81,7 @@ public class FarmController {
         usersCRUD.save(new Users(username, DigestUtils.sha256Hex(password),farm));
 
 
+        redirectAttributes.addFlashAttribute("alert",true);
         return "redirect:/";
     }
 }
