@@ -54,7 +54,7 @@
                     <div class="btn-group">
                         <button type="button" id="plus_main" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-plus"></i></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" id="disease-search" href="#">Kórelőzmény</a>
+                            <a class="dropdown-item" id="disease-search" href="../medical_search_interface">Kórelőzmény</a>
                             <a class="dropdown-item" id="disease-registration" href="../disease_registration">Betegség hozzáadása</a>
                             <#if holding??>
                                 <a class="dropdown-item" id="farm-registration" href="../farm-registration">${holding}</a>
