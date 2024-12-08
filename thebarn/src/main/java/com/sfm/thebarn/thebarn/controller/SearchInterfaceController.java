@@ -76,7 +76,6 @@ public class SearchInterfaceController {
 
         // if a search query was set
         if(!query.isEmpty() && usr.FarmId == null) {
-            //animals = animalsRepository.findById(query).stream().toList();
             animals = (List<Animals>)animalsRepository.findByIdOrFarmIdOrFarmName(query);
             model.addAttribute("holding","Tenyészet hozzáadása");
         }

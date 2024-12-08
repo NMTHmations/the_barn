@@ -12,8 +12,6 @@ import java.util.List;
 
 @Repository
 public interface AnimalsCRUD extends CrudRepository<Animals, String> {
-    //todo vv temp remove before final | working query
-    //@Query("select a from Animals a where a.id = :query or a.farmid.id = :query or a.farmid.FarmName = :query")
     @Query("select a from Animals a where " +
             "a.id LIKE CONCAT('%',:query,'%') or " +
             "a.farmid.id LIKE CONCAT('%',:query,'%') or " +
