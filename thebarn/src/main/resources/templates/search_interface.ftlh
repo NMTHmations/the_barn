@@ -110,7 +110,7 @@
                         <a href="/cattle-data/${animal.id}">${animal.birthDate}</a>
                     </div>
                     <div class="col-sm-1">
-                        <a href="/cattle-data/${animal.id}">${animal.sex?string('üsző','bika')}</a>
+                        <a href="/cattle-data/${animal.id}">${animal.sex?string('bika','üsző')}</a>
                     </div>
                     <div class="col-sm-2">
                         <a href="/cattle-data/${animal.id}">${animal.breed.name}</a>

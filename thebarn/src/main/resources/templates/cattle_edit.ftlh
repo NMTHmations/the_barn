@@ -601,7 +601,8 @@
 
             <button type="button"
                     class="btn btn-outline-primary"
-                     onclick="document.location='/search_interface'"
+                     onclick="document.location='/'"
+                     name="cancel-button"
                      style="border: 2px solid rgb(128,128,128);
                      color: rgb(128,128,128);
                      float: inline-start;
@@ -610,6 +611,7 @@
             </button>
             <button type="submit"
                     class="btn btn-primary"
+                    name="submit-button"
                     style="background-color: rgb(128,128,128);
                     border-color: rgb(128,128,128);
                     float: inline-end;

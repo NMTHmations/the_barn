@@ -57,6 +57,7 @@
             <textarea id="floatingDescription" name="description" style="width: 400px;" rows="3"></textarea>
         </div>
         <button type="button"
+                name="cancel-button"
                 class="btn btn-outline-primary"
                 onclick="document.location='/'"
                 style="border: 2px solid rgb(128,128,128);
@@ -66,6 +67,7 @@
             Mégse
         </button>
         <button type="submit"
+                name="submit-button"
                 class="btn btn-primary"
                 style="background-color: rgb(128,128,128);
                     border-color: rgb(128,128,128);

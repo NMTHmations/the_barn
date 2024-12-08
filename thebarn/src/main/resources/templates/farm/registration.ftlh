@@ -101,8 +101,8 @@
             <input type="password" id="password" name="password" required>
         </div>
         <div class="text-center">
-            <button type="button" class="btn btn-outline-secondary" onclick="location.href='/'">Mégsem</button>
-            <button type="submit" class="btn btn-primary">Mentés</button>
+            <button type="button" name="cancel" class="btn btn-outline-secondary" onclick="location.href='/'">Mégsem</button>
+            <button type="submit" name="submit-button" class="btn btn-primary">Mentés</button>
         </div>
     </form>
 </main>
