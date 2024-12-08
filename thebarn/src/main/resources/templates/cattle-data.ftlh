@@ -21,7 +21,7 @@
         </button>
         <button type="button"
                     class="btn btn-outline-primary"
-                    onclick="document.location='/medical_history_search'"
+                    onclick="document.location='/medical_search_interface'"
                     style="border: 2px solid rgb(128,128,128);
                     color: rgb(128,128,128);
                     margin-bottom: 15px;">

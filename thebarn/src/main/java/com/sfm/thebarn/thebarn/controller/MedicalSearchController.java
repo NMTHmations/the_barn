@@ -69,13 +69,8 @@ public class MedicalSearchController {
         List<DiseaseLog> diseaseLogs = diseaseLogsList(usr);
 
         // if a search query was set
-        if(!query.isEmpty() && usr.FarmId == null) {
+        if(!query.isEmpty()) {
             diseaseLogs = (List<DiseaseLog>)diseaseRepository.findByAnimalIdOrFarmName(query);
-            model.addAttribute("holding","Tenyészet hozzáadása");
-        }
-        else if (!query.isEmpty() && usr.FarmId != null)
-        {
-            diseaseLogs = (List<DiseaseLog>) diseaseRepository.findByIdFixedFarmId(query, usr.FarmId.getId());
         }
 
         // if a breed was specified
@@ -89,7 +84,9 @@ public class MedicalSearchController {
             diseaseLogs = searchResults;
         }
 
-
+        if (usr.getFarmId() == null) {
+            model.addAttribute("holding","Tenyészet hozzáadása");
+        }
         // get all disease types
         List<DiseaseTypes> diseaseTypes = (List<DiseaseTypes>)diseaseTypesRepository.findAll();
 

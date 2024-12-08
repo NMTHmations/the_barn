@@ -118,14 +118,14 @@ public class CattleEditController {
     }
 
     @PostMapping("/cattle_edit/{id}")
-    public String cattleRegistration(RedirectAttributes redirectAttributes, @PathVariable String id, HttpServletRequest request, @RequestParam String selfId, @RequestParam String sex, @RequestParam String breed, @RequestParam String type, @RequestParam String colour, @RequestParam String birthDate, @RequestParam String deathDate, @RequestParam String previousId, @RequestParam String motherId, @RequestParam String fatherId, @RequestParam(required = false) String holdingId, Model model) {
+    public String cattleRegistration(RedirectAttributes redirectAttributes, @PathVariable String id, HttpServletRequest request, @RequestParam String sex, @RequestParam String breed, @RequestParam String type, @RequestParam String colour, @RequestParam String birthDate, @RequestParam String deathDate, @RequestParam String previousId, @RequestParam String motherId, @RequestParam String fatherId, @RequestParam(required = false) String holdingId, Model model) {
 
         HttpSession current = request.getSession(false); // get current session
         if (current == null) { // if there is  no session
             return "redirect:/login"; // redirect to login
         }
 
-        Users user = usersRepository.findById((String) current.getAttribute("userid")).orElse(null); // get user from session
+        Users user = usersRepository.findById((String) current.getAttribute("userID")).orElse(null); // get user from session
         if (user == null) // if user doesn't exists
         {
             current.invalidate(); // end session
@@ -136,23 +136,6 @@ public class CattleEditController {
         if (animal == null) { // if not found
             return "redirect:/error404"; // show 404 error
         }
-
-        Animals self = animalsRepository.findById(selfId).orElse(null); //find submitted self id
-        if (!id.equals(selfId)) // if selfid change
-        {
-            if (self != null) //if new self id already exists
-            {
-                redirectAttributes.addFlashAttribute("error", "Már létezik marha ilyen azonosítóval!"); // make self id error message visible
-                if (user.getFarmId() == null){ // if user is admin
-                    redirectAttributes.addFlashAttribute("HCinput", "true"); // make holding code input visible
-                }
-                else{
-                    redirectAttributes.addFlashAttribute("HCinput", "false");
-                }
-                return "redirect:/cattle_edit/" + id; // stay on cattle edit
-            }
-        }
-
 
         Farms farm;
         if (user.getFarmId() == null) // if user is admin
@@ -260,6 +243,6 @@ public class CattleEditController {
             return "redirect:/cattle_edit/" + id; // stay on cattle edit
         }
 
-        return "redirect:/cattle-data/" + selfId;
+        return "redirect:/cattle-data/" + id;
     }
 }

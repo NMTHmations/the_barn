@@ -75,13 +75,8 @@ public class SearchInterfaceController {
         List<Animals> animals = animalsList(usr);
 
         // if a search query was set
-        if(!query.isEmpty() && usr.FarmId == null) {
+        if(!query.isEmpty()) {
             animals = (List<Animals>)animalsRepository.findByIdOrFarmIdOrFarmName(query);
-            model.addAttribute("holding","Tenyészet hozzáadása");
-        }
-        else if (!query.isEmpty() && usr.FarmId != null)
-        {
-            animals = (List<Animals>) animalsRepository.findByIdFixedFarmId(query, usr.FarmId.getId());
         }
 
         // if a checkbox was set
@@ -125,6 +120,11 @@ public class SearchInterfaceController {
                 }
             }
             animals = searchResults;
+        }
+
+        if (usr.getFarmId() == null)
+        {
+            model.addAttribute("holding","Tenyészet hozzáadása");
         }
 
 

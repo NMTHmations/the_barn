@@ -88,14 +88,14 @@ public class CattleDataController {
             model.addAttribute("motherId", "-"); // give back data: "-" (if doesn't exits)
         }
         else{
-            model.addAttribute("motherId", animal.getFatherid()); // give back data: mother id (if exits)
+            model.addAttribute("motherId", animal.getMotherid().getId()); // give back data: mother id (if exits)
         }
 
         if(animal.getFatherid() == null) {
             model.addAttribute("fatherId", "-"); // give back data: "-" (if doesn't exits)
         }
         else{
-            model.addAttribute("fatherId", animal.getFatherid()); // give back data: father id (if exits)
+            model.addAttribute("fatherId", animal.getFatherid().getId()); // give back data: father id (if exits)
         }
         model.addAttribute("farmName", farm.getFarmName()); // give back data: farm name
         model.addAttribute("farmId", animal.getFarmid().getId()); // give back data: farm id

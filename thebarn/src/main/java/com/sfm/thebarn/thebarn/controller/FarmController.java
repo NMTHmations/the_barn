@@ -34,12 +34,16 @@ public class FarmController {
     @GetMapping
     public String showRegistrationForm(HttpServletRequest request) {
         HttpSession req = request.getSession(false);
+        String username = req.getAttribute("userID").toString();
         if (req == null) {
             return "redirect:/login";
         }
         if (userService.returnList().isEmpty())
         {
             return "redirect:/register";
+        }
+        if (usersCRUD.findById(username).get().getFarmId() != null) {
+            return "redirect:/";
         }
         return "farm/registration";
     }

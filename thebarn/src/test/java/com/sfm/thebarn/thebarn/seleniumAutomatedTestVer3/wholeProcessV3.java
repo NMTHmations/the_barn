@@ -1,10 +1,9 @@
 package com.sfm.thebarn.thebarn.seleniumAutomatedTestVer3;
 
 import com.sfm.thebarn.thebarn.ThebarnApplication;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.testng.annotations.AfterMethod;
@@ -118,8 +117,10 @@ public class wholeProcessV3 {
 
     @Test
     public void AddCattles() throws InterruptedException {
-        AddFarms();
-        RegisterCattle();
+        if (!(driver.getPageSource().contains("HU-12345") || driver.getPageSource().contains("HU-54321"))) {
+            AddFarms();
+            RegisterCattle();
+        }
         assertTrue(driver.getPageSource().contains("HU-12345"));
         assertTrue(driver.getPageSource().contains("HU-54321"));
     }
@@ -389,9 +390,36 @@ public class wholeProcessV3 {
         if (driver.findElement(By.name("submit-button")).isDisplayed()) {
             driver.findElement(By.name("submit-button")).click();
         }
-        sleep(5000);
         driver.get("http://localhost:8080/cattle-data/HU-12345");
         assertTrue(driver.getPageSource().contains("HU-54321"));
+    }
+
+    @Test
+    public void EditCattleWithWrongMumID() throws InterruptedException {
+        if (!(driver.getPageSource().contains("HU-12345") || driver.getPageSource().contains("HU-54321"))) {
+            AddFarms();
+            RegisterCattle();
+        }
+        driver.get("http://localhost:8080/cattle_edit/HU-12345");
+        driver.findElement(By.id("floatingMotherId")).sendKeys("HU-54321");
+        if (driver.findElement(By.name("submit-button")).isDisplayed()) {
+            driver.findElement(By.name("submit-button")).click();
+        }
+        assertTrue(driver.getPageSource().contains("Nem létező Anya azonosító!"));
+    }
+
+    @Test
+    public void EditCattleWithWrongFatherID() throws InterruptedException {
+        if (!(driver.getPageSource().contains("HU-12345") || driver.getPageSource().contains("HU-54321"))) {
+            AddFarms();
+            RegisterCattle();
+        }
+        driver.get("http://localhost:8080/cattle_edit/HU-12345");
+        driver.findElement(By.id("floatingFatherId")).sendKeys("HU-54421");
+        if (driver.findElement(By.name("submit-button")).isDisplayed()) {
+            driver.findElement(By.name("submit-button")).click();
+        }
+        assertTrue(driver.getPageSource().contains("Nem létező Apa azonosító!"));
     }
 
     @Test
@@ -503,6 +531,123 @@ public class wholeProcessV3 {
             driver.findElement(By.name("submit-button")).click();
         }
         assertTrue(driver.getPageSource().contains("A megadott felhasználónév (e-mail cím) már létezik!"));
+    }
+
+    @Test
+    public void RegisterDiseaseAndShowInDMedicalHistory() throws InterruptedException {
+        FillDiseaseFormOK();
+        driver.get("http://localhost:8080/medical_search_interface");
+        assertTrue(driver.getPageSource().contains("HU-12345"));
+    }
+
+    @Test
+    public void SearchForOtherDiseases() throws InterruptedException {
+        RegisterDiseaseAndShowInDMedicalHistory();
+        driver.findElement(By.name("query")).sendKeys("HU-54321");
+        driver.findElement(By.className("btn-submit")).click();
+        assertTrue(driver.getPageSource().contains("nincs találat"));
+    }
+
+    @Test
+    public void SelectOtherDiseaseTypes() throws InterruptedException {
+        RegisterDiseaseAndShowInDMedicalHistory();
+        WebElement elem = driver.findElement(By.name("disease"));
+        Select select = new Select(elem);
+        select.selectByValue("22");
+        driver.findElement(By.className("btn-submit")).click();
+        assertTrue(driver.getPageSource().contains("nincs találat"));
+    }
+
+    @Test
+    public void SelectBreedInSearchInterface() throws InterruptedException {
+        if (!(driver.getPageSource().contains("HU-12345") || driver.getPageSource().contains("HU-54321"))) {
+            AddFarms();
+            RegisterCattle();
+        }
+        WebElement elem = driver.findElement(By.name("breed"));
+        Select select = new Select(elem);
+        select.selectByValue("22");
+        driver.findElement(By.className("btn-submit")).click();
+        assertTrue(driver.getPageSource().contains("nincs találat"));
+    }
+
+    @Test
+    public void AccesFarmRegisterWithoutAdmin() throws InterruptedException {
+        if (!(driver.getPageSource().contains("HU-12345") || driver.getPageSource().contains("HU-54321"))) {
+            AddFarms();
+            RegisterCattle();
+        }
+        TestLogout();
+        driver.findElement(By.id("floatingInput")).sendKeys("test1@example.com");
+        driver.findElement(By.id("floatingPassword")).sendKeys("SFM2024");
+        ClickTheButton();
+        driver.get("http://localhost:8080/farm-registration");
+        assertTrue(driver.getCurrentUrl().equals("http://localhost:8080/"));
+    }
+
+    @Test
+    public void TryToModifyCattleWhichYouNotOwn() throws InterruptedException {
+        if (!(driver.getPageSource().contains("HU-12345") || driver.getPageSource().contains("HU-54321"))) {
+            AddFarms();
+            RegisterCattle();
+        }
+        TestLogout();
+        driver.findElement(By.id("floatingInput")).sendKeys("test1@example.com");
+        driver.findElement(By.id("floatingPassword")).sendKeys("SFM2024");
+        ClickTheButton();
+        driver.get("http://localhost:8080/cattle_edit/HU-54321");
+        assertTrue(driver.getCurrentUrl().equals("http://localhost:8080/login"));
+    }
+
+    @Test
+    public void LookUpCattleWhichYouNotOwn() throws InterruptedException {
+        if (!(driver.getPageSource().contains("HU-12345") || driver.getPageSource().contains("HU-54321"))) {
+            AddFarms();
+            RegisterCattle();
+        }
+        TestLogout();
+        driver.findElement(By.id("floatingInput")).sendKeys("test1@example.com");
+        driver.findElement(By.id("floatingPassword")).sendKeys("SFM2024");
+        ClickTheButton();
+        driver.get("http://localhost:8080/cattle-data/HU-54321");
+        assertTrue(driver.getCurrentUrl().equals("http://localhost:8080/login"));
+    }
+
+    @Test
+    public void RegisterCattleWithoutHoldingIdDisplayed() throws InterruptedException {
+        if (!(driver.getPageSource().contains("HU-12345") || driver.getPageSource().contains("HU-54321"))) {
+            AddFarms();
+            RegisterCattle();
+        }
+        TestLogout();
+        driver.findElement(By.id("floatingInput")).sendKeys("test1@example.com");
+        driver.findElement(By.id("floatingPassword")).sendKeys("SFM2024");
+        ClickTheButton();
+        driver.get("http://localhost:8080/cattle_registration");
+        assertThrows(NoSuchElementException.class,()->driver.findElement(By.id("floatingHoldingId")).isDisplayed());
+    }
+
+    @Test
+    public void RegisterDiseaseToNotYourAnimal() throws InterruptedException {
+        if (!(driver.getPageSource().contains("HU-12345") || driver.getPageSource().contains("HU-54321"))) {
+            AddFarms();
+            RegisterCattle();
+        }
+        TestLogout();
+        driver.findElement(By.id("floatingInput")).sendKeys("test1@example.com");
+        driver.findElement(By.id("floatingPassword")).sendKeys("SFM2024");
+        ClickTheButton();
+        driver.get("http://localhost:8080/disease_registration");
+        driver.findElement(By.id("floatingAnimalId")).sendKeys("HU-54321");
+        driver.findElement(By.id("floatingDiseaseType")).sendKeys("22");
+        driver.findElement(By.id("floatingDate")).sendKeys("002024-12-06");
+        driver.findElement(By.name("description")).sendKeys("Bendő felfújódás");
+        if (driver.findElement(By.name("submit-button")).isDisplayed())
+        {
+            driver.findElement(By.name("submit-button")).click();
+        }
+        assertTrue(driver.getPageSource().contains("A megadott állat nem az ön állata!"));
+
     }
 
     @AfterMethod
