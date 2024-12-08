@@ -14,12 +14,14 @@
             <div class="container-fluid">
                 <!--page header-->
                 <div class="row search-header">
-                    <div class="col-sm-7 search-header-generic search-header-searchbar">
+                    <div class="col-sm-5 search-header-generic search-header-searchbar">
                         <!--searchbar-->
                         <input type="search" class="searchbar" placeholder="keresés" name="query">
                         <!-- submit (search) button -->
                         <button class="btn-submit"><i class="fa-solid fa-magnifying-glass btn-submit"></i></button>
                     </div>
+                    <!-- padding -->
+                    <div class="col-sm-1 search-header-generic"></div>
                     <div class="col-sm-3 search-header-generic">
                         <!--disease dropdown-->
                         <select name="disease" class="dropdown-generic">
@@ -29,6 +31,8 @@
                             </#list>
                         </select>
                     </div>
+                    <!-- padding -->
+                    <div class="col-sm-2 search-header-generic"></div>
                     <div class="col-sm-1 search-header-generic">
                         <!-- dropdown menu -->
                         <div class="btn-group">
