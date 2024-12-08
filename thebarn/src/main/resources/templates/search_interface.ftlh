@@ -54,7 +54,7 @@
                     <div class="btn-group">
                         <button type="button" id="plus_main" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-plus"></i></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" id="disease-search" href="#">Kórelőzmény</a>
+                            <a class="dropdown-item" id="disease-search" href="../medical_search_interface">Kórelőzmény</a>
                             <a class="dropdown-item" id="disease-registration" href="../disease_registration">Betegség hozzáadása</a>
                             <#if holding??>
                                 <a class="dropdown-item" id="farm-registration" href="../farm-registration">${holding}</a>
@@ -98,25 +98,25 @@
                 <#list animals as animal>
                 <div class="row table-row">
                     <div class="col-sm-2">
-                        ${animal.id}
+                        <a href="/cattle-data/${animal.id}">${animal.id}</a>
                     </div>
                     <div class="col-sm-2">
-                        ${animal.farmid.farmName}
+                        <a href="/cattle-data/${animal.id}">${animal.farmid.farmName}</a>
                     </div>
                     <div class="col-sm-2">
-                        ${animal.farmid.id}
+                        <a href="/cattle-data/${animal.id}">${animal.farmid.id}</a>
                     </div>
                     <div class="col-sm-2">
-                        ${animal.birthDate}
+                        <a href="/cattle-data/${animal.id}">${animal.birthDate}</a>
                     </div>
                     <div class="col-sm-1">
-                        ${animal.sex?string('üsző','bika')}
+                        <a href="/cattle-data/${animal.id}">${animal.sex?string('bika','üsző')}</a>
                     </div>
                     <div class="col-sm-2">
-                        ${animal.breed.name}
+                        <a href="/cattle-data/${animal.id}">${animal.breed.name}</a>
                     </div>
                     <div class="col-sm-1">
-                        ${animal.type.name}
+                        <a href="/cattle-data/${animal.id}">${animal.type.name}</a>
                     </div>
                 </div>
                 <#else>

@@ -8,6 +8,7 @@ class ThebarnApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

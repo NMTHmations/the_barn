@@ -75,14 +75,8 @@ public class SearchInterfaceController {
         List<Animals> animals = animalsList(usr);
 
         // if a search query was set
-        if(!query.isEmpty() && usr.FarmId == null) {
-            //animals = animalsRepository.findById(query).stream().toList();
+        if(!query.isEmpty()) {
             animals = (List<Animals>)animalsRepository.findByIdOrFarmIdOrFarmName(query);
-            model.addAttribute("holding","Tenyészet hozzáadása");
-        }
-        else if (!query.isEmpty() && usr.FarmId != null)
-        {
-            animals = (List<Animals>) animalsRepository.findByIdFixedFarmId(query, usr.FarmId.getId());
         }
 
         // if a checkbox was set
@@ -91,14 +85,14 @@ public class SearchInterfaceController {
             for(var animal : animals) {
                 // if 'üsző' was checked
                 if(option1 != null && !option1.isEmpty()) {
-                    if(animal.isSex()) {
+                    if(animal.getSex()) {
                         searchResults.add(animal);
                     }
                 }
 
                 // if 'bika' was checked
                 if(option2 != null && !option2.isEmpty()) {
-                    if(!animal.isSex()) {
+                    if(!animal.getSex()) {
                         searchResults.add(animal);
                     }
                 }
@@ -126,6 +120,11 @@ public class SearchInterfaceController {
                 }
             }
             animals = searchResults;
+        }
+
+        if (usr.getFarmId() == null)
+        {
+            model.addAttribute("holding","Tenyészet hozzáadása");
         }
 
 

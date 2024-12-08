@@ -65,4 +65,9 @@ public class Animals {
         this.breed = breed;
         this.type = type;
     }
+
+    public boolean getSex()
+    {
+        return this.Sex;
+    }
 }

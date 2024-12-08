@@ -18,7 +18,7 @@ import static java.lang.Thread.sleep;
 import static org.junit.Assert.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class WholeProcessV2 {
+public class wholeProcessV2 {
     WebDriver driver;
     public void ClickTheButton()
     {
@@ -93,7 +93,7 @@ public class WholeProcessV2 {
     }
 
     public void RegisterCattle() throws InterruptedException {
-        List<CattleRegForm> cattle = new ArrayList<>(List.of(new CattleRegForm("HU-321342","true","5","1","3","002024-12-06","HU-12345-12345"),new CattleRegForm("HU-43542","false","2","1","3","002024-12-06","HU-54321-54321")));
+        List<CattleRegForm> cattle = new ArrayList<>(List.of(new CattleRegForm("HU-12345","true","5","1","3","002024-12-06","HU-12345-12345"),new CattleRegForm("HU-54321","false","2","1","3","002024-12-06","HU-54321-54321")));
         for (CattleRegForm cattleRegForm : cattle)
         {
             ChoosePlus();

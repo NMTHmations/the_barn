@@ -570,4 +570,3 @@ INSERT INTO diseasetypes(diseasetypename) VALUES('Kéknyelv');
 INSERT INTO diseasetypes(diseasetypename) VALUES('Kergemarha-kór (BSE)');
 INSERT INTO diseasetypes(diseasetypename) VALUES('Tarlós-sömör');
 INSERT INTO diseasetypes(diseasetypename) VALUES('Egyéb');
-
