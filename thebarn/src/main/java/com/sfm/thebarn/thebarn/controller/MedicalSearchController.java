@@ -51,7 +51,7 @@ public class MedicalSearchController {
             model.addAttribute("holding","Tenyészet hozzáadása");
         }
         List<DiseaseTypes> diseaseTypes = (List<DiseaseTypes>)diseaseTypesRepository.findAll();
-        List<DiseaseLog> diseaseLogs = (List<DiseaseLog>)diseaseRepository.findAll();
+        List<DiseaseLog> diseaseLogs = diseaseLogsList(usersCRUD.findById(username).get());
         model.addAttribute("diseaseTypes", diseaseTypes);
         model.addAttribute("diseaseLogs", diseaseLogs);
         model.addAttribute("username",username);

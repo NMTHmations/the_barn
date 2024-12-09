@@ -41,7 +41,7 @@ if driver.page_source.find("nincs találat") != -1:
         driver.find_element(By.ID,"zipCode").send_keys("1111")
         driver.find_element(By.ID,"settlement").send_keys("Pornóapáti")
         driver.find_element(By.ID,"street").send_keys("Minta utca")
-        driver.find_element(By.ID,"streetNumber").send_keys(str(i))
+        driver.find_element(By.ID,"streetNumber").send_keys(str(i+1))
         driver.find_element(By.ID,"username").send_keys(username[i])
         driver.find_element(By.ID,"password").send_keys("SFM2024?")
         sleep(2)
